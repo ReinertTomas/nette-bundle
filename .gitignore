@@ -1,0 +1,16 @@
+# Nette
+app/config/config.local.neon
+log/*
+temp/*
+
+# Git
+!.gitignore
+
+# Composer
+/vendor
+
+# Node
+/node_modules
+
+# Phpstorm
+/.idea
