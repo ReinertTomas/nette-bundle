@@ -1,0 +1,26 @@
+# Core Config
+includes:
+	# Application
+	- ../app/parameters.neon
+	- ../app/services.neon
+
+php:
+	date.timezone: Europe/Prague
+	output_buffering: 4096
+
+session:
+    expiration: 14 days
+
+application:
+	catchExceptions: %productionMode%
+	errorPresenter: %system.error.presenter%
+	mapping:
+		*: App\*Module\Presenters\*Presenter
+
+di:
+	debugger: true
+
+tracy:
+	email: %system.error.email%
+	logSeverity: E_ALL
+	strictMode: yes

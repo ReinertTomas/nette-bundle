@@ -1,0 +1,18 @@
+# Services
+#
+services:
+	# Forms
+	#- App\UI\Form\FormFactory
+
+
+	# Security ================
+	nette.userStorage:
+		setup:
+			- setNamespace("Test")
+
+
+	# Routing ================
+	- App\Model\Router\RouterFactory
+	router:
+		class: Nette\Application\IRouter
+		factory: @App\Model\Router\RouterFactory::create

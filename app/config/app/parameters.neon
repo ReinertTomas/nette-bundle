@@ -1,0 +1,28 @@
+# Parameters
+#
+parameters:
+
+	# System
+	system:
+		error:
+			email: test@localhost.net
+			presenter: Error
+
+	# Project
+	project:
+		rev: "1.0.0"
+
+	# File
+	files:
+		root: %appDir%/../data/files
+
+	# Mailing
+	mailing:
+		from: test@localhost
+		from_name: Testovac
+
+	# STMP
+	smtp:
+		host: localhost
+		username: fake
+		password: fake

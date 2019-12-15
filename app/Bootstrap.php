@@ -6,35 +6,37 @@ namespace App;
 
 use Nette\Configurator;
 
-
-class Bootstrap
+final class Bootstrap
 {
-	public static function boot(): Configurator
-	{
-		$configurator = new Configurator;
+    /**
+     * @return Configurator
+     */
+    public static function boot(): Configurator
+    {
+        $configurator = new Configurator;
 
-		//$configurator->setDebugMode('23.75.345.200'); // enable for your remote IP
-		$configurator->enableTracy(__DIR__ . '/../log');
+        //$configurator->setDebugMode('23.75.345.200'); // enable for your remote IP
+        $configurator->enableTracy(__DIR__ . '/../log');
 
-		$configurator->setTimeZone('Europe/Prague');
-		$configurator->setTempDirectory(__DIR__ . '/../temp');
+        $configurator->setTimeZone('Europe/Prague');
+        $configurator->setTempDirectory(__DIR__ . '/../temp');
 
-		$configurator->createRobotLoader()
-			->addDirectory(__DIR__)
-			->register();
+        $configurator->createRobotLoader()
+            ->addDirectory(__DIR__)
+            ->register();
 
-		$configurator
-			->addConfig(__DIR__ . '/config/common.neon')
-			->addConfig(__DIR__ . '/config/local.neon');
+        $configurator->addConfig(__DIR__ . '/config/env/base.neon');
 
-		return $configurator;
-	}
+        return $configurator;
+    }
 
-
-	public static function bootForTests(): Configurator
-	{
-		$configurator = self::boot();
-		\Tester\Environment::setup();
-		return $configurator;
-	}
+    /**
+     * @return Configurator
+     */
+    public static function bootForTests(): Configurator
+    {
+        $configurator = self::boot();
+        \Tester\Environment::setup();
+        return $configurator;
+    }
 }
