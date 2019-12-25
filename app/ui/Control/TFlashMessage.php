@@ -11,7 +11,12 @@ use stdClass;
  */
 trait TFlashMessage
 {
-    public function flashMessage(string $message, string $type = 'info'): stdClass
+    /**
+     * @param string $message
+     * @param string $type
+     * @return stdClass
+     */
+    public function flashMessage($message, string $type = 'info'): stdClass
     {
         if ($this->isAjax()) {
             $this->redrawControl('flashes');
