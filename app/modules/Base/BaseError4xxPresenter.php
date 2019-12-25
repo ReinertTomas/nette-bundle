@@ -8,7 +8,7 @@ use Nette\Application\Request;
 use Nette\Application\UI\ComponentReflection;
 use Nette\InvalidStateException;
 
-abstract class BaseError4xxPresenter extends SecuredPresenter
+abstract class BaseError4xxPresenter extends UnsecuredPresenter
 {
     /**
      * @throws BadRequestException

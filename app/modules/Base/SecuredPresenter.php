@@ -22,7 +22,7 @@ abstract class SecuredPresenter extends BasePresenter
             }
 
             $this->redirect(
-                App::DESTINATION_AFTER_SIGN_IN,
+                App::DESTINATION_SIGN_IN,
                 ['backlink' => $this->storeRequest()]
             );
         }

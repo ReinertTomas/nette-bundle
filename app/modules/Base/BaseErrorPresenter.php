@@ -14,7 +14,7 @@ use Nette\Http\IResponse;
 use Throwable;
 use Tracy\ILogger;
 
-abstract class BaseErrorPresenter extends SecuredPresenter
+abstract class BaseErrorPresenter extends UnsecuredPresenter
 {
     /** @var ILogger */
     private $logger;
