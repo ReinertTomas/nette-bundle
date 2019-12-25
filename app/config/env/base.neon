@@ -15,7 +15,8 @@ application:
 	catchExceptions: %productionMode%
 	errorPresenter: %system.error.presenter%
 	mapping:
-		*: App\*Module\Presenters\*Presenter
+	    Admin: [App\Modules\Admin, *, *\*Presenter]
+	    Front: [App\Modules\Front, *, *\*Presenter]
 
 di:
 	debugger: true
