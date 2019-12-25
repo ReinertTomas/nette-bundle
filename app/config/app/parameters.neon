@@ -6,7 +6,7 @@ parameters:
 	system:
 		error:
 			email: test@localhost.net
-			presenter: Error
+			presenter: Front:Error
 
 	# Project
 	project:

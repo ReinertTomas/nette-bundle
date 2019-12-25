@@ -22,6 +22,6 @@ di:
 	debugger: true
 
 tracy:
-	email: %system.error.email%
+	# email: %system.error.email%
 	logSeverity: E_ALL
 	strictMode: yes
