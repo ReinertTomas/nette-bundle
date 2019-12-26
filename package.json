@@ -22,5 +22,26 @@
     "bugs": {
         "url": "https://github.com/ReinertTomas/nette-bundle/issues"
     },
-    "homepage": "https://github.com/ReinertTomas/nette-bundle#readme"
+    "homepage": "https://github.com/ReinertTomas/nette-bundle#readme",
+    "dependencies": {
+        "@fortawesome/fontawesome-free": "^5.12.0",
+        "bootstrap": "^4.4.1",
+        "jquery": "^3.4.1",
+        "naja": "^1.7.0",
+        "nette-forms": "^3.0.3",
+        "popper.js": "^1.16.0"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.7.7",
+        "@babel/preset-env": "^7.7.7",
+        "babel-loader": "^8.0.6",
+        "clean-webpack-plugin": "^3.0.0",
+        "css-loader": "^3.4.0",
+        "file-loader": "^5.0.2",
+        "mini-css-extract-plugin": "^0.9.0",
+        "style-loader": "^1.1.2",
+        "url-loader": "^3.0.0",
+        "webpack": "^4.41.4",
+        "webpack-cli": "^3.3.10"
+    }
 }
