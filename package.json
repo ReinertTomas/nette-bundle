@@ -1,0 +1,26 @@
+{
+    "name": "nette-bundle",
+    "description": "Packages nette-bundle project",
+    "main": "index.js",
+    "directories": {
+        "test": "tests"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ReinertTomas/nette-bundle.git"
+    },
+    "keywords": [
+        "Nette",
+        "Bootstrap",
+        "Webpack"
+    ],
+    "author": "reinert.tomas <reinerttomas@gmail.com>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/ReinertTomas/nette-bundle/issues"
+    },
+    "homepage": "https://github.com/ReinertTomas/nette-bundle#readme"
+}
