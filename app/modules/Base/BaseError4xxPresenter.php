@@ -35,7 +35,7 @@ abstract class BaseError4xxPresenter extends UnsecuredPresenter
         }
 
         $dir = dirname($fileName);
-
+        
         // Load template 403.latte or 404.latte or ... 4xx.latte
         $file = $dir . '/templates/' . $exception->getCode() . '.latte';
         $this->template->setFile(is_file($file) ? $file : $dir . '/templates/4xx.latte');

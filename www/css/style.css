@@ -1,16 +1,8 @@
 body {
-	margin-top: 20px;
+    padding-top: 5rem;
 }
 
-h1 {
-	color: #3484D2;
-}
-
-a[href^="#error:"] {
-	background: red;
-	color: white;
-}
-
-form .required label {
-	font-weight: bold;
+.starter-template {
+    padding: 3rem 1.5rem;
+    text-align: center;
 }

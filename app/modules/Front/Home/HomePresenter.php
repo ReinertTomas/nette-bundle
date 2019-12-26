@@ -7,5 +7,6 @@ use App\Modules\Front\BaseFrontPresenter;
 
 final class HomePresenter extends BaseFrontPresenter
 {
-
+    public function renderDefault(){
+    }
 }
