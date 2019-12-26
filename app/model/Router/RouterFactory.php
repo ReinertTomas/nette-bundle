@@ -15,9 +15,22 @@ final class RouterFactory
     {
         $router = new RouteList;
 
+        $this->buildAdmin($router);
         $this->buildFront($router);
 
         return $router;
+    }
+
+    /**
+     * @phpstan-param RouteList<Route> $router
+     * @phpstan-return RouteList<Route>
+     */
+    protected function buildAdmin(RouteList $router): RouteList
+    {
+        $list = new RouteList('Admin');
+        $list->addRoute('admin/<presenter>/<action>[/<id>]', 'Home:default');
+
+        return $router->add($list);
     }
 
     /**
