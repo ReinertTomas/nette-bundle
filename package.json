@@ -27,6 +27,7 @@
         "@fortawesome/fontawesome-free": "^5.12.0",
         "bootstrap": "^4.4.1",
         "jquery": "^3.4.1",
+        "jquery.easing": "^1.4.1",
         "naja": "^1.7.0",
         "nette-forms": "^3.0.3",
         "popper.js": "^1.16.0"
