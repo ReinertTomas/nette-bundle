@@ -1,12 +1,9 @@
 {
     "name": "nette-bundle",
     "description": "Packages nette-bundle project",
-    "main": "index.js",
-    "directories": {
-        "test": "tests"
-    },
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "dev": "webpack --mode development --progress",
+        "build": "webpack --mode production"
     },
     "repository": {
         "type": "git",
