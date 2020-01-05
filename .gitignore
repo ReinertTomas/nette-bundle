@@ -14,3 +14,6 @@ temp/*
 
 # Phpstorm
 /.idea
+
+# Webpack bundles
+www/dist/*
