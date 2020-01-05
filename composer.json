@@ -1,7 +1,6 @@
 {
-    "name": "nette/sandbox",
+    "name": "nette/bundle",
     "description": "The sandbox is a pre-packaged Nette Framework project, basic configured structure for your application.",
-    "homepage": "https://nette.org",
     "type": "project",
     "license": [
         "BSD-3-Clause",
@@ -10,12 +9,8 @@
     ],
     "authors": [
         {
-            "name": "David Grudl",
-            "homepage": "https://davidgrudl.com"
-        },
-        {
-            "name": "Nette Community",
-            "homepage": "https://nette.org/contributors"
+            "name": "Tomas Reinert",
+            "email": "reinerttomas@gmail.com"
         }
     ],
     "require": {
