@@ -1,5 +1,4 @@
 # Nette
-app/config/config.local.neon
 log/*
 temp/*
 
@@ -16,4 +15,4 @@ temp/*
 /.idea
 
 # Webpack bundles
-www/dist/*
+www/dist/
