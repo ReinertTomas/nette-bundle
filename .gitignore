@@ -15,4 +15,4 @@ temp/*
 /.idea
 
 # Webpack bundles
-www/dist/
+www/dist
