@@ -14,5 +14,5 @@ services:
 	# Routing ================
 	- App\Model\Router\RouterFactory
 	router:
-		class: Nette\Application\IRouter
+		class: Nette\Routing\Router
 		factory: @App\Model\Router\RouterFactory::create
