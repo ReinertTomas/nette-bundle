@@ -4,3 +4,6 @@ includes:
 parameters:
 	autoload_directories:
 		- ../app
+
+	excludes_analyse:
+	    - ../www/checker
