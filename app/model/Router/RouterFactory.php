@@ -1,5 +1,4 @@
 <?php
-
 declare(strict_types=1);
 
 namespace App\Model\Router;
@@ -8,9 +7,6 @@ use Nette\Application\Routers\RouteList;
 
 final class RouterFactory
 {
-    /**
-     * @phpstan-return RouteList><Route>
-     */
     public function create(): RouteList
     {
         $router = new RouteList;
@@ -21,10 +17,6 @@ final class RouterFactory
         return $router;
     }
 
-    /**
-     * @phpstan-param RouteList<Route> $router
-     * @phpstan-return RouteList<Route>
-     */
     protected function buildAdmin(RouteList $router): RouteList
     {
         $list = new RouteList('Admin');
@@ -33,10 +25,6 @@ final class RouterFactory
         return $router->add($list);
     }
 
-    /**
-     * @phpstan-param RouteList<Route> $router
-     * @phpstan-return RouteList<Route>
-     */
     protected function buildFront(RouteList $router): RouteList
     {
         $list = new RouteList('Front');
