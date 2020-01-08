@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "52fe7998c8e6ca8aa4b37c292b8a7492",
+    "content-hash": "65ea66f6632878d502100a60dc35923b",
     "packages": [
         {
             "name": "contributte/application",
@@ -67,6 +67,71 @@
                 "presenter"
             ],
             "time": "2019-06-17T19:30:31+00:00"
+        },
+        {
+            "name": "contributte/cache",
+            "version": "v0.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/contributte/cache.git",
+                "reference": "c54d4c4448f16b6cfbfa34607990904c19b5759e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/contributte/cache/zipball/c54d4c4448f16b6cfbfa34607990904c19b5759e",
+                "reference": "c54d4c4448f16b6cfbfa34607990904c19b5759e",
+                "shasum": ""
+            },
+            "require": {
+                "nette/caching": "~3.0.0",
+                "php": "^7.2"
+            },
+            "conflict": {
+                "nette/di": "<3.0.0"
+            },
+            "require-dev": {
+                "nette/di": "~3.0.0",
+                "ninjify/nunjuck": "^0.2.0",
+                "ninjify/qa": "^0.8.0",
+                "phpstan/extension-installer": "^1.0",
+                "phpstan/phpstan-deprecation-rules": "^0.11",
+                "phpstan/phpstan-nette": "^0.11",
+                "phpstan/phpstan-shim": "^0.11",
+                "phpstan/phpstan-strict-rules": "^0.11",
+                "tracy/tracy": "~2.6.0"
+            },
+            "suggest": {
+                "nette/di": "to use CacheFactoryExtension and DebugStorageExtension"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.5.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Contributte\\Cache\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Milan Felix Šulc",
+                    "homepage": "https://f3l1x.io"
+                }
+            ],
+            "description": "Extra contrib to nette/cache",
+            "homepage": "https://github.com/contributte/cache",
+            "keywords": [
+                "cache",
+                "nette",
+                "provider"
+            ],
+            "time": "2019-07-15T07:52:35+00:00"
         },
         {
             "name": "dg/adminer-custom",

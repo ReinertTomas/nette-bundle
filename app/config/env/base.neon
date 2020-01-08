@@ -4,6 +4,10 @@ includes:
 	- ../app/parameters.neon
 	- ../app/services.neon
 
+	# Extensions
+	- ../ext/contributte.neon
+	#- ../ext/nettrine.neon
+
 php:
 	date.timezone: Europe/Prague
 	output_buffering: 4096
