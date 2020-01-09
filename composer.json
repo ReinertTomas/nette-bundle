@@ -14,7 +14,7 @@
         }
     ],
     "require": {
-        "php": ">=7.3",
+        "php": ">=7.4",
         "nette/application": "^3.0",
         "nette/bootstrap": "^3.0",
         "nette/caching": "^3.0",
@@ -52,7 +52,7 @@
     "minimum-stability": "stable",
     "config": {
         "platform": {
-            "php": "7.3"
+            "php": "7.4"
         }
     },
     "scripts": {
