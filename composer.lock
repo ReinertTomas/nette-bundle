@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "65ea66f6632878d502100a60dc35923b",
+    "content-hash": "2626575dcdb9a9318b6b3092c302387d",
     "packages": [
         {
             "name": "contributte/application",
@@ -132,6 +132,71 @@
                 "provider"
             ],
             "time": "2019-07-15T07:52:35+00:00"
+        },
+        {
+            "name": "contributte/latte",
+            "version": "v0.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/contributte/latte.git",
+                "reference": "45b929dde1f759246014d86e0efb07cb8a482b49"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/contributte/latte/zipball/45b929dde1f759246014d86e0efb07cb8a482b49",
+                "reference": "45b929dde1f759246014d86e0efb07cb8a482b49",
+                "shasum": ""
+            },
+            "require": {
+                "latte/latte": "~2.5.1|~2.6.0",
+                "php": "^7.2"
+            },
+            "conflict": {
+                "nette/di": "<3.0.0"
+            },
+            "require-dev": {
+                "nette/application": "~3.0.0",
+                "nette/di": "~3.0.0",
+                "ninjify/nunjuck": "^0.3.0",
+                "ninjify/qa": "^0.10.0",
+                "phpstan/extension-installer": "^1.0",
+                "phpstan/phpstan-deprecation-rules": "^0.11",
+                "phpstan/phpstan-nette": "^0.11",
+                "phpstan/phpstan-shim": "^0.11",
+                "phpstan/phpstan-strict-rules": "^0.11"
+            },
+            "suggest": {
+                "nette/di": "to use VersionExtension[CompilerExtension]"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.5.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Contributte\\Latte\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Milan Felix Šulc",
+                    "homepage": "https://f3l1x.io"
+                }
+            ],
+            "description": "Extra contrib to nette/latte",
+            "homepage": "https://github.com/contributte/latte",
+            "keywords": [
+                "extra",
+                "latte",
+                "nette"
+            ],
+            "time": "2020-01-05T00:27:30+00:00"
         },
         {
             "name": "dg/adminer-custom",
@@ -1672,10 +1737,10 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.3"
+        "php": ">=7.4"
     },
     "platform-dev": [],
     "platform-overrides": {
-        "php": "7.3"
+        "php": "7.4"
     }
 }

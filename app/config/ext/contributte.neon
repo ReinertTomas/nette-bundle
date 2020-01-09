@@ -2,3 +2,7 @@
 #
 extensions:
     cache.factory: Contributte\Cache\DI\CacheFactoryExtension
+    version: Contributte\Latte\DI\VersionExtension
+
+version:
+    generated: %debugMode%
