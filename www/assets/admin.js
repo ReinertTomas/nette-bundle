@@ -12,10 +12,12 @@ import 'naja';
  */
 // import 'bootstrap/dist/css/bootstrap.css';
 import '@fortawesome/fontawesome-free/css/all.css';
+import 'ublaboo-datagrid/assets/datagrid.css';
 import './css/sb-admin-2.css';
 import './css/style.css';
 
 /**
  * JS
  */
+import 'ublaboo-datagrid/assets/datagrid';
 import './js/sb-admin-2';
