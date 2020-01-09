@@ -16,8 +16,7 @@ use Tracy\ILogger;
 
 abstract class BaseErrorPresenter extends UnsecuredPresenter
 {
-    /** @var ILogger */
-    private $logger;
+    private ILogger $logger;
 
     public function __construct(ILogger $logger)
     {
