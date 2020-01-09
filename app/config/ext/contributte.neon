@@ -3,6 +3,11 @@
 extensions:
     cache.factory: Contributte\Cache\DI\CacheFactoryExtension
     version: Contributte\Latte\DI\VersionExtension
+    post: Contributte\Mail\DI\MailExtension
 
 version:
     generated: %debugMode%
+
+post:
+    debug: %debugMode%
+    mailer: Contributte\Mail\Mailer\DevNullMailer
