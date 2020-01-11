@@ -3,16 +3,23 @@ declare(strict_types=1);
 
 namespace App\Modules\Admin\Example;
 
+use App\Model\Utils\DateTime;
 use App\Modules\Admin\BaseAdminPresenter;
 use Ublaboo\DataGrid\DataGrid;
 
 class ExamplePresenter extends BaseAdminPresenter
 {
+
     private array $data;
 
     public function actionDatagrid(): void
     {
         $this->data = json_decode(file_get_contents("./table.json"), true);
+    }
+
+    protected function beforeRender()
+    {
+        $this->template->datetime = new DateTime();
     }
 
     protected function createComponentSimpleGrid(string $name): DataGrid
@@ -31,4 +38,14 @@ class ExamplePresenter extends BaseAdminPresenter
 
         return $grid;
     }
+
+    public function handleRefresh(?string $snippet): void
+    {
+        if ($this->isAjax()) {
+            $this->redrawControl($snippet);
+        } else {
+            $this->redirect('this');
+        }
+    }
+
 }

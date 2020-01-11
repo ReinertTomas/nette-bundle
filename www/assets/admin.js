@@ -7,7 +7,7 @@ import 'bootstrap';
 import './js/naja';
 import 'bootstrap-datepicker';
 import 'bootstrap-select';
-import 'ublaboo-datagrid/assets/datagrid';
+// import 'ublaboo-datagrid/assets/datagrid';
 // import 'ublaboo-datagrid/assets/datagrid-instant-url-refresh';
 import './js/sb-admin-2';
 
