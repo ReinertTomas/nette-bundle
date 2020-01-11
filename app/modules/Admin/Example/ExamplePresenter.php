@@ -10,7 +10,7 @@ class ExamplePresenter extends BaseAdminPresenter
 {
     private array $data;
 
-    public function actionDatagrid()
+    public function actionDatagrid(): void
     {
         $this->data = json_decode(file_get_contents("./table.json"), true);
     }
@@ -21,7 +21,8 @@ class ExamplePresenter extends BaseAdminPresenter
 
         $grid->setDataSource($this->data);
         $grid->addColumnText('id', 'Id');
-        $grid->addColumnText('name', 'Name');
+        $grid->addColumnText('name', 'Name')
+            ->setFilterText();
         $grid->addColumnText('position', 'Position');
         $grid->addColumnText('salary', 'Salary');
         $grid->addColumnText('date', 'Date');
