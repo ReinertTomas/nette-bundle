@@ -36,7 +36,9 @@
         "contributte/utils": "^0.4.2",
         "contributte/mail": "^0.5.1",
         "contributte/di": "^0.4.2",
-        "ublaboo/datagrid": "^6.2"
+        "ublaboo/datagrid": "^6.2",
+        "contributte/console": "^0.8.0",
+        "contributte/console-extra": "^0.5.2"
     },
     "require-dev": {
         "nette/tester": "^2.0",
