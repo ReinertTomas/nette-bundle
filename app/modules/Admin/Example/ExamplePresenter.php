@@ -17,7 +17,7 @@ class ExamplePresenter extends BaseAdminPresenter
 
     protected function createComponentSimpleGrid(string $name): DataGrid
     {
-        $grid = new DataGrid($this, $name);
+        $grid = $this->gridFactory->create($this, $name);
 
         $grid->setDataSource($this->data);
         $grid->addColumnText('id', 'Id');
