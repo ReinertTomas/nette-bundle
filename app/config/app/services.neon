@@ -20,3 +20,7 @@ services:
 
 	# Grid
 	- App\UI\Grid\GridFactory
+
+
+	# Console ================
+	- {class: App\Model\Console\HelloCommand, tags: {console.command: hello}}

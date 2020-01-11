@@ -1,9 +1,14 @@
 # Extension > Contributte
 #
 extensions:
+    console: Contributte\Console\DI\ConsoleExtension(%consoleMode%)
     cache.factory: Contributte\Cache\DI\CacheFactoryExtension
     version: Contributte\Latte\DI\VersionExtension
     post: Contributte\Mail\DI\MailExtension
+
+console:
+	url: http://localhost/
+	lazy: true
 
 version:
     generated: %debugMode%
