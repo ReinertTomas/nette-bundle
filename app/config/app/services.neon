@@ -1,10 +1,6 @@
 # Services
 #
 services:
-	# Forms
-	#- App\UI\Form\FormFactory
-
-
 	# Security ================
 	nette.userStorage:
 		setup:
@@ -16,3 +12,11 @@ services:
 	router:
 		class: Nette\Routing\Router
 		factory: @App\Model\Router\RouterFactory::create
+
+
+	# Forms
+	#- App\UI\Form\FormFactory
+
+
+	# Grid
+	- App\UI\Grid\GridFactory
