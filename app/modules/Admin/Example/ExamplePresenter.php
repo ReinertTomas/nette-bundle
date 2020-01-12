@@ -27,9 +27,9 @@ class ExamplePresenter extends BaseAdminPresenter
         $grid = $this->gridFactory->create($this, $name);
 
         $grid->setDataSource($this->data);
-        $grid->addColumnText('id', 'Id');
-        $grid->addColumnText('name', 'Name')
-            ->setFilterText();
+        $grid->addColumnText('id', 'Id')
+            ->setSortable();
+        $grid->addColumnText('name', 'Name');
         $grid->addColumnText('position', 'Position');
         $grid->addColumnText('salary', 'Salary');
         $grid->addColumnText('date', 'Date');
