@@ -24,3 +24,7 @@ services:
 
 	# Console ================
 	- {class: App\Model\Console\HelloCommand, tags: {console.command: hello}}
+
+
+	# Domain =================
+	- App\Domain\Order\OrderLogSubscriber

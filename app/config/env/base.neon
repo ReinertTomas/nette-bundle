@@ -14,6 +14,7 @@ php:
 
 session:
     expiration: 14 days
+    cookieSamesite: Lax
 
 application:
 	catchExceptions: %productionMode%
