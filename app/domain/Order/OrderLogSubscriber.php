@@ -14,7 +14,7 @@ class OrderLogSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents(): array
     {
         return [
-            OrderCreated::class => 'log',
+            OrderCreated::class => 'log'
         ];
     }
 
