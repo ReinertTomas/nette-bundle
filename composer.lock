@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dd660fba59d090b77d54d735a871a17b",
+    "content-hash": "de49e98bf2819f47d87b7d4e914897ec",
     "packages": [
         {
             "name": "contributte/application",
@@ -396,6 +396,78 @@
                 "symfony"
             ],
             "time": "2020-01-03T18:12:50+00:00"
+        },
+        {
+            "name": "contributte/event-dispatcher-extra",
+            "version": "v0.7.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/contributte/event-dispatcher-extra.git",
+                "reference": "fc73be816546dc984625d756d82e7942cadb44af"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/contributte/event-dispatcher-extra/zipball/fc73be816546dc984625d756d82e7942cadb44af",
+                "reference": "fc73be816546dc984625d756d82e7942cadb44af",
+                "shasum": ""
+            },
+            "require": {
+                "nette/di": "~3.0.0",
+                "php": "^7.2",
+                "symfony/event-dispatcher": "^4.3.1|^5.0.0"
+            },
+            "conflict": {
+                "nette/di": "<3.0.0"
+            },
+            "require-dev": {
+                "contributte/event-dispatcher": "^0.6.0|^0.7.0",
+                "latte/latte": "~2.5.1",
+                "nette/application": "~3.0.0",
+                "nette/http": "~3.0.1",
+                "nette/security": "~3.0.0",
+                "ninjify/nunjuck": "^0.2.0",
+                "ninjify/qa": "^0.8.0",
+                "phpstan/extension-installer": "^1.0",
+                "phpstan/phpstan-deprecation-rules": "^0.11",
+                "phpstan/phpstan-nette": "^0.11",
+                "phpstan/phpstan-shim": "^0.11",
+                "phpstan/phpstan-strict-rules": "^0.11"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.8.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Contributte\\Events\\Extra\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Milan Felix Šulc",
+                    "homepage": "https://f3l1x.io"
+                }
+            ],
+            "description": "Nette-based Symfony events for application, presenter, form, latte, templates, security and many others.",
+            "homepage": "https://github.com/contributte/event-dispatcher-extra",
+            "keywords": [
+                "Bridge",
+                "application",
+                "dispatcher",
+                "event",
+                "form",
+                "latte",
+                "nette",
+                "security",
+                "template"
+            ],
+            "time": "2020-01-05T13:14:47+00:00"
         },
         {
             "name": "contributte/latte",

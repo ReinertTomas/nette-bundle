@@ -4,6 +4,7 @@ extensions:
     console: Contributte\Console\DI\ConsoleExtension(%consoleMode%)
     console.extra: Contributte\Console\Extra\DI\ConsoleBridgesExtension
     events: Contributte\EventDispatcher\DI\EventDispatcherExtension
+    events.extra: Contributte\Events\Extra\DI\EventBridgesExtension
     cache.factory: Contributte\Cache\DI\CacheFactoryExtension
     version: Contributte\Latte\DI\VersionExtension
     post: Contributte\Mail\DI\MailExtension
