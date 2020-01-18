@@ -24,7 +24,18 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    {block #heading}{/}
+
+                    <!-- Flash messages -->
+                    {snippet flashes}
+                        {include 'flashes.latte'}
+                    {/snippet}
+
+                    <!-- Content -->
                     {include #content}
+
                 </div>
                 <!-- /.container-fluid -->
 

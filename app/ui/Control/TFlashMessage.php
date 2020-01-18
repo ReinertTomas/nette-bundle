@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\UI\Control;
 
 use App\Modules\Base\BasePresenter;
+use Nette\Application\AbortException;
 use stdClass;
 
 /**
@@ -11,36 +12,50 @@ use stdClass;
  */
 trait TFlashMessage
 {
+
     /**
-     * @param string $message
-     * @param string $type
-     * @return stdClass
+     * @throws AbortException
      */
-    public function flashMessage($message, string $type = 'info'): stdClass
+    public function redrawFlashes(): void
     {
         if ($this->isAjax()) {
             $this->redrawControl('flashes');
+        } else {
+            $this->redirect('this');
         }
-        return parent::flashMessage($message, $type);
+    }
+
+    /**
+     * @param string $message
+     * @param string $type
+     * @param string|null $icon
+     * @return stdClass
+     */
+    public function flashMessageIcon($message, ?string $type, ?string $icon): stdClass
+    {
+        $flash = parent::flashMessage($message, $type);
+        $flash->icon = $icon;
+        return $flash;
     }
 
     public function flashInfo(string $message): stdClass
     {
-        return $this->flashMessage($message, 'info');
+        return $this->flashMessageIcon($message, 'info', 'info');
     }
 
     public function flashSuccess(string $message): stdClass
     {
-        return $this->flashMessage($message, 'success');
+        return $this->flashMessageIcon($message, 'success', 'check');
     }
 
     public function flashWarning(string $message): stdClass
     {
-        return $this->flashMessage($message, 'warning');
+        return $this->flashMessageIcon($message, 'warning', 'exclamation');
     }
 
     public function flashError(string $message): stdClass
     {
-        return $this->flashMessage($message, 'danger');
+        return $this->flashMessageIcon($message, 'danger', 'exclamation-triangle');
     }
+
 }
