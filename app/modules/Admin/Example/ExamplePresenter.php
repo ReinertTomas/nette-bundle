@@ -109,6 +109,21 @@ class ExamplePresenter extends BaseAdminPresenter
         return $form;
     }
 
+    protected function createComponentModalForm(): Form {
+        $form = $this->formFactory->createSecured();
+
+        $form->addText('text', 'Text')
+            ->setRequired();
+
+        $form->addSubmit('submitRefresh', 'Refresh');
+
+        $form->onSuccess[] = function (Form $form): void {
+            $this->redrawModalContent();
+        };
+
+        return $form;
+    }
+
     public function handleRefresh(?string $snippet): void
     {
         if ($this->isAjax()) {
