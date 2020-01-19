@@ -69,12 +69,14 @@ class ExamplePresenter extends BaseAdminPresenter
         $form->addSubmit('submitSuccess', 'Success');
         $form->addSubmit('submitError', 'Error')
             ->setValidationScope(null)
-            ->onClick[] = function (Button $button) {
+            ->onClick[] = function (Button $button): void {
             $button->getForm()->addError("Error");
             $this->flashError("Form submit error.");
         };
 
-        $form->onSuccess[] = fn(Form $form) => $this->flashSuccess("Form submit success.");
+        $form->onSuccess[] = function (Form $form): void {
+            $this->flashSuccess("Form submit success.");
+        };
 
         return $form;
     }
@@ -90,13 +92,13 @@ class ExamplePresenter extends BaseAdminPresenter
         $form->addSubmit('submitSuccess', 'Success');
         $form->addSubmit('submitError', 'Error')
             ->setValidationScope(null)
-            ->onClick[] = function (Button $button) {
+            ->onClick[] = function (Button $button): void {
             $button->getForm()->addError("Error");
             $this->flashError("Form submit error.");
             $this->redrawFlashes();
         };
 
-        $form->onSuccess[] = function (Form $form) {
+        $form->onSuccess[] = function (Form $form): void {
             $this->flashSuccess("Form submit success.");
 
             if ($this->isAjax()) {
