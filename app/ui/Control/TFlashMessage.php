@@ -18,11 +18,7 @@ trait TFlashMessage
      */
     public function redrawFlashes(): void
     {
-        if ($this->isAjax()) {
-            $this->redrawControl('flashes');
-        } else {
-            $this->redirect('this');
-        }
+        $this->redrawControl('flashes');
     }
 
     /**
