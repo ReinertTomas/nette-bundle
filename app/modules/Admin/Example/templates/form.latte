@@ -72,7 +72,10 @@
         </div>
         <div class="modal-body">
             <h5 class="font-weight-bold">Time: <span class="small">{$datetime}</span></h5>
-            <input class="form-control" type="text" placeholder="Default input">
+            <div class="form-group">
+                {label text /}
+                {input text 'class' => 'form-control'}
+            </div>
         </div>
         <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>

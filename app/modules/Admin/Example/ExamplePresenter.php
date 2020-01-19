@@ -118,7 +118,11 @@ class ExamplePresenter extends BaseAdminPresenter
         $form->addSubmit('submitRefresh', 'Refresh');
 
         $form->onSuccess[] = function (Form $form): void {
-            $this->redrawModalContent();
+            if ($this->isAjax()) {
+                $this->redrawModalContent('example');
+            } else {
+                $this->redirect('this');
+            }
         };
 
         return $form;
