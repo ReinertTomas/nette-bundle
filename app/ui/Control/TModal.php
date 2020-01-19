@@ -11,8 +11,9 @@ use App\Modules\Base\BasePresenter;
 trait TModal
 {
 
-    public function redrawModalContent(): void
+    public function redrawModalContent(string $modal): void
     {
+        $this->template->add('modal', $modal);
         $this->redrawControl('modal-content');
     }
 
