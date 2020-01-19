@@ -8,6 +8,8 @@ use App\UI\Grid\GridFactory;
 
 abstract class BaseAdminPresenter extends UnsecuredPresenter
 {
+
     /** @inject */
     public GridFactory $gridFactory;
+
 }

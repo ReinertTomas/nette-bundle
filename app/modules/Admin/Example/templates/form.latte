@@ -1,0 +1,62 @@
+{block #heading}
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Forms</h1>
+    </div>
+{/}
+
+{block #content}
+<!-- Content Row -->
+<div class="row">
+    <div class="col-lg-4 mb-4">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Simple</h6>
+            </div>
+            <div class="card-body">
+                {form simpleForm}
+                    <div class="form-group">
+                        {label text /}
+                        {input text 'class' => 'form-control'}
+                    </div>
+                    <div class="form-group">
+                        {label email /}
+                        {input email 'class' => 'form-control'}
+                    </div>
+                    {input submitSuccess 'class' => 'btn btn-primary'}
+                    {input submitError 'class' => 'btn btn-danger'}
+                {/form}
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 mb-4">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Ajax</h6>
+            </div>
+            <div class="card-body">
+                {form ajaxForm 'class' => 'ajax'}
+                    <div class="form-group">
+                        {label text /}
+                        {input text 'class' => 'form-control'}
+                    </div>
+                    <div class="form-group">
+                        {label email /}
+                        {input email 'class' => 'form-control'}
+                    </div>
+                    {input submitSuccess 'class' => 'btn btn-primary'}
+                    {input submitError 'class' => 'btn btn-danger'}
+                {/form}
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 mb-4">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Modal</h6>
+            </div>
+            <div class="card-body">
+                <button class="btn btn-primary">Open</button>
+            </div>
+        </div>
+    </div>
+</div>

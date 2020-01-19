@@ -7,6 +7,7 @@ use App\Domain\Order\Event\OrderCreated;
 use App\Model\Utils\DateTime;
 use App\Modules\Admin\BaseAdminPresenter;
 use Nette\Application\UI\Form;
+use Nette\Forms\Controls\Button;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Ublaboo\DataGrid\DataGrid;
 
@@ -47,13 +48,62 @@ class ExamplePresenter extends BaseAdminPresenter
 
     protected function createComponentOrderForm(): Form
     {
-        $form = new Form();
+        $form = $this->formFactory->createSecured();
         $form->addText('order', 'Order name')
             ->setRequired(true);
         $form->addSubmit('send', 'OK');
         $form->onSuccess[] = function (Form $form): void {
             $this->dispatcher->dispatch(new OrderCreated($form->values->order));
         };
+        return $form;
+    }
+
+    protected function createComponentSimpleForm(): Form {
+        $form = $this->formFactory->createSecured();
+
+        $form->addText('text', 'Text')
+            ->setRequired();
+        $form->addText('email', 'Email')
+            ->setRequired();
+
+        $form->addSubmit('submitSuccess', 'Success');
+        $form->addSubmit('submitError', 'Error')
+            ->setValidationScope(null)
+            ->onClick[] = function (Button $button) {
+            $button->getForm()->addError("Error");
+            $this->flashError("Form submit error.");
+        };
+
+        $form->onSuccess[] = fn(Form $form) => $this->flashSuccess("Form submit success.");
+
+        return $form;
+    }
+
+    protected function createComponentAjaxForm(): Form {
+        $form = $this->formFactory->createSecured();
+
+        $form->addText('text', 'Text')
+            ->setRequired();
+        $form->addText('email', 'Email')
+            ->setRequired();
+
+        $form->addSubmit('submitSuccess', 'Success');
+        $form->addSubmit('submitError', 'Error')
+            ->setValidationScope(null)
+            ->onClick[] = function (Button $button) {
+            $button->getForm()->addError("Error");
+            $this->flashError("Form submit error.");
+            $this->redrawFlashes();
+        };
+
+        $form->onSuccess[] = function (Form $form) {
+            $this->flashSuccess("Form submit success.");
+
+            if ($this->isAjax()) {
+                $this->redrawFlashes();
+            }
+        };
+
         return $form;
     }
 

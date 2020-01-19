@@ -5,13 +5,19 @@ namespace App\UI\Form;
 
 use Nette\Application\UI\Form;
 
-final class SecuredFormFactory extends AbstractFormFactory
+class FormFactory
 {
 
     public function create(): Form
     {
-        $form = parent::create();
+        return new Form();
+    }
+
+    public function createSecured(): Form
+    {
+        $form = $this->create();
         $form->addProtection();
+
         return $form;
     }
 

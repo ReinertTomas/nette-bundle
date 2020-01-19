@@ -10,6 +10,7 @@ use Nette\Security\IUserStorage;
 
 abstract class SecuredPresenter extends BasePresenter
 {
+
     /**
      * @param ComponentReflection|mixed $element
      * @throws AbortException
