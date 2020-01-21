@@ -119,7 +119,7 @@ class ExamplePresenter extends BaseAdminPresenter
 
         $form->onSuccess[] = function (Form $form): void {
             if ($this->isAjax()) {
-                $this->redrawModalContent('example');
+                $this->redrawModalContent();
             } else {
                 $this->redirect('this');
             }
