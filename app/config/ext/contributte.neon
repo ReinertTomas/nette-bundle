@@ -18,4 +18,4 @@ version:
 
 post:
     debug: %debugMode%
-    mailer: Contributte\Mail\Mailer\DevNullMailer
+    mailer: Contributte\Mail\Mailer\FileMailer(%tempDir%/mails)

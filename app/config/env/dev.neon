@@ -1,0 +1,22 @@
+# config DEV
+#
+includes:
+    - base.neon
+
+parameters:
+    database:
+        host: localhost
+        user: root
+        password: Admin123!
+        dbname: db_test
+
+services:
+    # Security ================
+    nette.userStorage:
+        setup:
+            - setNamespace('nette-bundle')
+
+    # Mailer ==================
+    nette.mailer:
+        class: Nette\Mail\IMailer
+        factory: Contributte\Mail\Mailer\FileMailer(%tempDir%/mails)

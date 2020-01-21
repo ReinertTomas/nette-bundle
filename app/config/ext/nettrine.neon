@@ -1,0 +1,20 @@
+# Extension > Nettrine
+#
+extensions:
+
+    # Cache
+    nettrine.cache: Nettrine\Cache\DI\CacheExtension
+
+    # DBAL
+    dbal: Nettrine\DBAL\DI\DbalExtension
+    dbal.console: Nettrine\DBAL\DI\DbalConsoleExtension(%consoleMode%)
+
+dbal:
+    debug:
+        panel: %debugMode%
+        sourcePaths: [%appDir%]
+    connection:
+        host: %database.host%
+        user: %database.user%
+        password: %database.password%
+        dbname: %database.dbname%

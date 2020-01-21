@@ -25,7 +25,7 @@ final class Bootstrap
             ->addDirectory(__DIR__)
             ->register();
 
-        $configurator->addConfig(__DIR__ . '/config/env/base.neon');
+        $configurator->addConfig(__DIR__ . '/config/env/dev.neon');
 
         return $configurator;
     }
