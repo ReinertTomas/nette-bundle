@@ -20,6 +20,7 @@ Features
 ----------------
 - PHP 7.4
 - Phpstan
+- Doctrine (Nettrine)
 - Webpack (css & js bundler)
 - Naja.js (AJAX library)
 - Datagrid
