@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Modules\Base;
 
+use App\Model\Database\EntityManager;
 use App\UI\Control\TFlashMessage;
 use App\UI\Control\TModal;
 use App\UI\Form\FormFactory;
@@ -18,5 +19,8 @@ abstract class BasePresenter extends Presenter
 
     /** @inject */
     public FormFactory $formFactory;
+
+    /** @inject */
+    public EntityManager $em;
 
 }
