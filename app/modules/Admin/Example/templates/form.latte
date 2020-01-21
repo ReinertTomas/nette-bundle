@@ -63,23 +63,25 @@
 {/}
 
 {define modal-content-example}
-    {form modalForm 'class' => 'ajax'}
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal Example</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">×</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <h5 class="font-weight-bold">Time: <span class="small">{$datetime}</span></h5>
-            <div class="form-group">
-                {label text /}
-                {input text 'class' => 'form-control'}
+    <div n:snippet="modal-content" class="modal-content">
+        {form modalForm 'class' => 'ajax'}
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal Example</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
             </div>
-        </div>
-        <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            {input submitRefresh 'class' => 'btn btn-primary'}
-        </div>
-    {/form}
+            <div class="modal-body">
+                <h5 class="font-weight-bold">Time: <span class="small">{$datetime}</span></h5>
+                <div class="form-group">
+                    {label text /}
+                    {input text 'class' => 'form-control'}
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                {input submitRefresh 'class' => 'btn btn-primary'}
+            </div>
+        {/form}
+    </div>
 {/define}
