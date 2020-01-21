@@ -2,12 +2,19 @@
 #
 extensions:
 
-    # Cache
+    # Nettrine
     nettrine.cache: Nettrine\Cache\DI\CacheExtension
+    nettrine.annotations: Nettrine\Annotations\DI\AnnotationsExtension
 
     # DBAL
     dbal: Nettrine\DBAL\DI\DbalExtension
     dbal.console: Nettrine\DBAL\DI\DbalConsoleExtension(%consoleMode%)
+
+    # ORM
+    orm: Nettrine\ORM\DI\OrmExtension
+    orm.cache: Nettrine\ORM\DI\OrmCacheExtension
+    orm.console: Nettrine\ORM\DI\OrmConsoleExtension(%consoleMode%)
+    orm.annotations: Nettrine\ORM\DI\OrmAnnotationsExtension
 
 dbal:
     debug:
@@ -18,3 +25,14 @@ dbal:
         user: %database.user%
         password: %database.password%
         dbname: %database.dbname%
+        driver: %database.driver%
+
+orm:
+    entityManagerDecoratorClass: App\Model\Database\EntityManager
+    configuration:
+        autoGenerateProxyClasses: %debugMode%
+
+orm.annotations:
+    paths:
+        - %appDir%/model/Database/Entity
+    excludePaths: []
