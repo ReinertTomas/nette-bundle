@@ -44,7 +44,12 @@
     },
     "require-dev": {
         "nette/tester": "^2.0",
-        "phpstan/phpstan-nette": "^0.12.0"
+        "phpstan/phpstan": "^0.12.0",
+        "phpstan/phpstan-doctrine": "^0.12.0",
+        "phpstan/phpstan-deprecation-rules": "^0.12.0",
+        "phpstan/phpstan-nette": "^0.12.0",
+        "phpstan/phpstan-phpunit": "^0.12.0",
+        "phpstan/phpstan-strict-rules": "^0.12.0"
     },
     "autoload": {
         "classmap": [
@@ -65,6 +70,6 @@
         }
     },
     "scripts": {
-        "phpstan": "phpstan analyse --level 5 --configuration tests/phpstan.neon app bin www"
+        "phpstan": "phpstan analyse --level 5 --configuration phpstan.neon app bin www"
     }
 }
