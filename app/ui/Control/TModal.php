@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\UI\Control;
 
 use App\Modules\Base\BasePresenter;
+use Nette\Application\AbortException;
 
 /**
  * @mixin BasePresenter
@@ -11,17 +12,21 @@ use App\Modules\Base\BasePresenter;
 trait TModal
 {
 
-    public function redrawModalContent(string $modal): void
+    public function redrawModalContent(): void
     {
-        $this->template->add('modal', $modal);
         $this->redrawControl('modal-content');
     }
 
+    /**
+     * @param string $modal
+     * @param array|null $attr
+     * @throws AbortException
+     */
     public function handleModal(string $modal, ?array $attr): void
     {
         if ($this->isAjax()) {
-            $this->template->add('modal', $modal);
-            $this->template->add('modalAttr', $attr);
+            $this->template->modal = $modal;
+            $this->template->modalAttr = $attr;
             $this->redrawControl('modal');
         } else {
             $this->redirect('this');

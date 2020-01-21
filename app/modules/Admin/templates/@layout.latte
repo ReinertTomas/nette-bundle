@@ -58,14 +58,12 @@
     </div>
     <!-- End of Page Wrapper -->
 
-    <!-- Modal-->
+    <!-- Begin Modal-->
     {snippet modal}
         {ifset $modal}
             <div class="modal fade" id="layoutModal" tabindex="-1" role="dialog" aria-hidden="true">
                 <div n:class="modal-dialog, isset($modalAttr['class']) ? $modalAttr['class']" role="document">
-                    <div n:snippet="modal-content" class="modal-content">
-                        {include #"modal-content-{$modal}"}
-                    </div>
+                    {include #"modal-content-{$modal}"}
                 </div>
             </div>
         {/ifset}
