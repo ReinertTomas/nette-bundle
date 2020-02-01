@@ -16,6 +16,11 @@ extensions:
     orm.console: Nettrine\ORM\DI\OrmConsoleExtension(%consoleMode%)
     orm.annotations: Nettrine\ORM\DI\OrmAnnotationsExtension
 
+    # Migrations
+    migrations: Nettrine\Migrations\DI\MigrationsExtension
+    # Fixtures
+    fixtures: Nettrine\Fixtures\DI\FixturesExtension
+
 dbal:
     debug:
         panel: %debugMode%
@@ -36,3 +41,18 @@ orm.annotations:
     paths:
         - %appDir%/model/Database/Entity
     excludePaths: []
+
+migrations:
+	table: doctrine_migrations
+	column: version
+	directory: db/Migrations
+	namespace: Database\Migrations
+	versionsOrganization: null
+
+fixtures:
+	paths:
+		- db/Fixtures
+
+decorator:
+	Doctrine\Common\EventSubscriber:
+		tags: [nettrine.subscriber]

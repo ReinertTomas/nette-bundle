@@ -43,7 +43,9 @@
         "contributte/event-dispatcher-extra": "^0.7.1",
         "nettrine/dbal": "^0.6.2",
         "nettrine/orm": "^0.5.0",
-        "nettrine/annotations": "^0.6.0"
+        "nettrine/annotations": "^0.6.0",
+        "nettrine/migrations": "^0.6.1",
+        "nettrine/fixtures": "^0.5.1"
     },
     "require-dev": {
         "nette/tester": "^2.0",
