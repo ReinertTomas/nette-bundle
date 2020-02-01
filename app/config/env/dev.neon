@@ -9,7 +9,7 @@ parameters:
         user: root
         password: Admin123!
         dbname: db_test
-        driver: mysqli
+        driver: pdo_mysql #mysqli
 
 services:
     # Security ================
