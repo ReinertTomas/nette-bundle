@@ -31,6 +31,10 @@ dbal:
         password: %database.password%
         dbname: %database.dbname%
         driver: %database.driver%
+        types:
+            datetime:
+                class: App\Model\Database\Entity\Types\DateTimeType
+                commented: false
 
 orm:
     entityManagerDecoratorClass: App\Model\Database\EntityManager

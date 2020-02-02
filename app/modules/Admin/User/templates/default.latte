@@ -1,0 +1,23 @@
+{block #heading}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a n:href=":Admin:Home:">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">User</li>
+        </ol>
+    </nav>
+    <div class="d-sm-flex justify-content-end mb-3">
+        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+            <i class="fas fa-user-plus fa-sm text-white-50"></i> New User
+        </a>
+    </div>
+{/}
+
+{block #content}
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                {control usersGrid}
+            </div>
+        </div>
+    </div>
+{/}

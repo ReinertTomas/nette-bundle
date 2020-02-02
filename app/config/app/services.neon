@@ -13,13 +13,22 @@ services:
 		setup:
 			- setNamespace("Test")
 
+	security.passwords: App\Model\Security\Passwords
+	security.user: App\Model\Security\SecurityUser
+	security.authenticator: App\Model\Security\Authenticator\UserAuthenticator
+
 
 	# Forms
 	- App\UI\Form\FormFactory
+	- App\UI\Form\Security\SignInFormFactory
 
 
 	# Grid
 	- App\UI\Grid\GridFactory
+	- App\UI\Grid\User\UserGridFactory
+
+
+	# Controls
 
 
 	# Console ================

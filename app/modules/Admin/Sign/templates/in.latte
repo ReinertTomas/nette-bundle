@@ -1,0 +1,57 @@
+{block #content}
+    <div class="container">
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+
+            <div class="col-xl-10 col-lg-12 col-md-9">
+
+                <div n:if="$flashes" class="my-5">
+                    {include '../../templates/flashes.latte'}
+                </div>
+
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                            <div class="col-lg-6">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                    </div>
+                                    {form signInForm 'class' => 'user'}
+                                        <div n:if="$form->hasErrors()" n:foreach="$form->getErrors() as $error"
+                                                class="alert alert-danger alert-dismissible fade show" role="alert">
+                                            <i class="fa fa-exclamation-triangle mr-2"></i>{$error}
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="form-group">
+                                            {input email 'class' => 'form-control px-3 py-4', 'placeholder' => 'Enter Email Address...'}
+                                        </div>
+                                        <div class="form-group">
+                                            {input password 'class' => 'form-control px-3 py-4', 'placeholder' => 'Password'}
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="custom-control custom-checkbox">
+                                                <input n:name="remember" type="checkbox" class="custom-control-input">
+                                                <label n:name="remember" class="custom-control-label">Remember
+                                                    Me</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            {input submit 'class' => 'btn btn-primary btn-block'}
+                                        </div>
+                                    {/form}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+{/}

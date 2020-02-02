@@ -1,0 +1,14 @@
+{layout '../../../Base/templates/@layout.latte'}
+
+{block #head}
+    <link href="{$basePath}/dist/admin.bundle.css?v={rev}" rel="stylesheet">
+{/}
+
+{block #main}
+
+    <!-- Content -->
+    {include #content}
+
+    <!-- JS bundle -->
+    <script src="{$basePath}/dist/admin.bundle.js?v={rev}"></script>
+{/}
