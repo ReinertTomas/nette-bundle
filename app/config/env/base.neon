@@ -3,6 +3,7 @@ includes:
 	# Application
 	- ../app/parameters.neon
 	- ../app/services.neon
+	- ../app/forms.neon
 
 	# Extensions
 	- ../ext/contributte.neon

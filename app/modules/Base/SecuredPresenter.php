@@ -4,12 +4,15 @@ declare(strict_types=1);
 namespace App\Modules\Base;
 
 use App\Model\App;
+use App\Model\Database\Entity\User;
 use Nette\Application\AbortException;
 use Nette\Application\UI\ComponentReflection;
 use Nette\Security\IUserStorage;
 
 abstract class SecuredPresenter extends BasePresenter
 {
+
+    protected User $userLoggedIn;
 
     /**
      * @param ComponentReflection|mixed $element
@@ -27,6 +30,15 @@ abstract class SecuredPresenter extends BasePresenter
                 ['backlink' => $this->storeRequest()]
             );
         }
+
+        $this->userLoggedIn = $this->em->getUserRepository()->find($this->user->getId());
+    }
+
+    protected function beforeRender()
+    {
+        parent::beforeRender();
+
+        $this->template->userLoggedIn = $this->userLoggedIn;
     }
 
 }

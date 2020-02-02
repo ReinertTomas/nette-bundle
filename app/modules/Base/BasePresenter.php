@@ -18,9 +18,6 @@ abstract class BasePresenter extends Presenter
     use TModal;
 
     /** @inject */
-    public FormFactory $formFactory;
-
-    /** @inject */
     public EntityManager $em;
 
 }

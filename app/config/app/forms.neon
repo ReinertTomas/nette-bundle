@@ -1,0 +1,14 @@
+# Services
+#
+services:
+
+    # Forms
+    - App\UI\Form\FormFactory
+    - App\UI\Form\Security\SignInFormFactory
+
+    # Security
+    - App\UI\Form\Security\PasswordFormFactory
+
+    # User
+    - App\UI\Form\User\NewUserFormFactory
+    - App\UI\Form\User\EditUserFormFactory

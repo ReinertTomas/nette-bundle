@@ -32,7 +32,12 @@ final class UserGridFactory
         $grid->addColumnText('email', 'Email');
         $grid->addColumnText('role', 'Role');
         $grid->addColumnText('state', 'State');
-        $grid->addColumnText('lastLoggedAt', 'Last Logged At');
+        $grid->addColumnText('createdAt', 'Created');
+        $grid->addColumnText('updatedAt', 'Updated');
+        $grid->addColumnText('lastLoggedAt', 'Last Logged');
+
+        $grid->addAction('edit', '', ':Admin:User:edit')
+            ->setIcon('pencil-alt');
 
         return $grid;
     }

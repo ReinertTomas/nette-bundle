@@ -3,14 +3,14 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a n:href=":Admin:Home:">Home</a></li>
             <li class="breadcrumb-item"><a n:href=":Admin:User:">User</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Edit</li>
+            <li class="breadcrumb-item active" aria-current="page">New</li>
         </ol>
     </nav>
 {/}
 
 {block #content}
     <div class="container">
-        {form editUserForm}
+        {form newUserForm}
             <h4 class="mb-3">Profile</h4>
             <div class="row">
                 <div class="col-md-6 mb-3">
@@ -49,44 +49,26 @@
                     </div>
                 </div>
             </div>
-            {input submit 'class' => 'btn btn-primary'}
-        {/form}
-        <!-- Is user own profile -->
-        {if $isOwnProfile}
             <hr class="mb-4">
-            <h4 class="mb-3">Security</h4>
-            <a n:href="modal! 'password'" class="ajax btn btn-warning">Change Password</a>
-        {/if}
-    </div>
-{/}
-
-{define modal-content-password}
-    <div class="modal-content">
-        {form changePasswordForm}
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Change Password</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    {label passwordOld}
-                    {input passwordOld 'class' => 'form-control'}
+            <h4 class="mb-3">Password</h4>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    {label password}
+                    {input password 'class' => 'form-control'}
+                    <div class="invalid-feedback">
+                        Valid password is required.
+                    </div>
                 </div>
-                <div class="form-group">
-                    {label passwordNew}
-                    {input passwordNew 'class' => 'form-control'}
-                </div>
-                <div class="form-group">
-                    {label passwordNewConfirm}
-                    {input passwordNewConfirm 'class' => 'form-control'}
+                <div class="col-md-6 mb-3">
+                    {label passwordConfirm}
+                    {input passwordConfirm 'class' => 'form-control'}
+                    <div class="invalid-feedback">
+                        Valid password confirm is required.
+                    </div>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                {input submit 'class' => 'btn btn-primary'}
-            </div>
+            <hr class="mb-4">
+            {input submit 'class' => 'btn btn-primary'}
         {/form}
     </div>
 {/}
