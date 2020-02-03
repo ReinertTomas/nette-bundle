@@ -72,15 +72,30 @@
             <div class="modal-body">
                 <div class="form-group">
                     {label passwordOld}
-                    {input passwordOld 'class' => 'form-control'}
+                    <div class="input-group">
+                        {input passwordOld 'class' => 'form-control'}
+                        <div class="input-group-append">
+                            <a class="input-group-text password-toggle" type="button"><i class="fa fa-eye-slash"></i></a>
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group">
                     {label passwordNew}
-                    {input passwordNew 'class' => 'form-control'}
+                    <div class="input-group">
+                        {input passwordNew 'class' => 'form-control'}
+                        <div class="input-group-append">
+                            <a class="input-group-text password-toggle" type="button"><i class="fa fa-eye-slash"></i></a>
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group">
                     {label passwordNewConfirm}
-                    {input passwordNewConfirm 'class' => 'form-control'}
+                    <div class="input-group">
+                        {input passwordNewConfirm 'class' => 'form-control'}
+                        <div class="input-group-append">
+                            <a class="input-group-text password-toggle" type="button"><i class="fa fa-eye-slash"></i></a>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">

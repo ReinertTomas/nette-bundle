@@ -6,6 +6,7 @@ namespace App\Modules\Admin\Example;
 use App\Domain\Order\Event\OrderCreated;
 use App\Model\Utils\DateTime;
 use App\Modules\Admin\BaseAdminPresenter;
+use App\UI\Form\FormFactory;
 use Nette\Application\UI\Form;
 use Nette\Forms\Controls\Button;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
@@ -13,6 +14,9 @@ use Ublaboo\DataGrid\DataGrid;
 
 class ExamplePresenter extends BaseAdminPresenter
 {
+
+    /** @inject */
+    public FormFactory $formFactory;
 
     /** @inject */
     public EventDispatcherInterface $dispatcher;
@@ -24,10 +28,13 @@ class ExamplePresenter extends BaseAdminPresenter
         $this->data = json_decode(file_get_contents("./table.json"), true);
     }
 
-    protected function beforeRender()
+    protected function beforeRender(): void
     {
+        parent::beforeRender();
+
         $this->template->datetime = new DateTime();
     }
+
 
     protected function createComponentSimpleGrid(string $name): DataGrid
     {

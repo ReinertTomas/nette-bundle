@@ -5,6 +5,7 @@ namespace App\Modules\Admin\User;
 
 use App\Domain\User\CreateUserFacade;
 use App\Domain\User\UpdateUserFacade;
+use App\Model\Exception\Logic\InvalidArgumentException;
 use App\Modules\Admin\BaseAdminPresenter;
 use App\UI\Form\Security\PasswordFormFactory;
 use App\UI\Form\User\EditUserFormFactory;
@@ -111,10 +112,17 @@ class UserPresenter extends BaseAdminPresenter
 
         $form->onSuccess[] = function (Form $form): void {
             $values = (array) $form->getValues();
-            dump($values);
-            dump('password');
-            die();
 
+            $user = $this->em->getUserRepository()->find($this->user->getId());
+
+            try {
+                $this->updateUserFacade->changePassword($user, $values['passwordOld'], $values['passwordNew']);
+            } catch (InvalidArgumentException $e) {
+                $this->flashError($e->getMessage());
+                return;
+            }
+
+            $this->flashSuccess('User password was changed.');
             $this->redirect('this');
         };
 

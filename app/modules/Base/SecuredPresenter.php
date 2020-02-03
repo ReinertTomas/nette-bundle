@@ -30,11 +30,16 @@ abstract class SecuredPresenter extends BasePresenter
                 ['backlink' => $this->storeRequest()]
             );
         }
+    }
+
+    protected function startup(): void
+    {
+        parent::startup();
 
         $this->userLoggedIn = $this->em->getUserRepository()->find($this->user->getId());
     }
 
-    protected function beforeRender()
+    protected function beforeRender(): void
     {
         parent::beforeRender();
 

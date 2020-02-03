@@ -6,7 +6,6 @@ namespace App\Modules\Base;
 use App\Model\Database\EntityManager;
 use App\UI\Control\TFlashMessage;
 use App\UI\Control\TModal;
-use App\UI\Form\FormFactory;
 use Contributte\Application\UI\Presenter\StructuredTemplates;
 use Nette\Application\UI\Presenter;
 
