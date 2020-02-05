@@ -36,3 +36,8 @@ services:
 	# User
 	- App\Domain\User\CreateUserFacade
 	- App\Domain\User\UpdateUserFacade
+
+decorator:
+    App\Modules\Admin\File\FilePresenter:
+        setup:
+            - setDir(%dir.files%)

@@ -13,8 +13,9 @@ parameters:
 		rev: "1.0.0"
 
 	# File
-	files:
-		root: %appDir%/../data/files
+	dir:
+	    files: %appDir%/../www/files
+	    root: %appDir%/../data/files
 
 	# Mailing
 	mailing:

@@ -135,6 +135,22 @@ class ExamplePresenter extends BaseAdminPresenter
         return $form;
     }
 
+    protected function createComponentFileForm(): Form
+    {
+        $form = $this->formFactory->createSecured();
+
+        $form->addUpload('file', 'File');
+        $form->addSubmit('submit', 'Submit');
+
+        $form->onSuccess[] = function (Form $form): void {
+            $values = (array)$form->getValues();
+            dump($values);
+            die();
+        };
+
+        return $form;
+    }
+
     public function handleRefresh(?string $snippet): void
     {
         if ($this->isAjax()) {
