@@ -18,20 +18,15 @@ class FilePresenter extends BaseAdminPresenter
 
     public function actionPost(): void
     {
-        $basePath = $this->getHttpRequest()->getUrl()->getBasePath();
-        $files = [];
-
         /** @var FileUpload $file */
         foreach ($this->getRequest()->getFiles() as $file) {
-            $path = "{$this->dir}/{$file->getName()}";
-            $file->move($path);
-            $files[] = $path;
+            if ($file->isOk()) {
+                $file->move("{$this->dir}/{$file->getName()}");
+            }
         }
 
         $this->sendJson([
-            'status' => 200,
-            'message' => 'It works!',
-            'files' => $files
+            'message' => 'It works!'
         ]);
     }
 

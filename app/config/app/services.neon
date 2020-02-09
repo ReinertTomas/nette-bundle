@@ -24,6 +24,7 @@ services:
 
 
 	# Controls ===============
+	- App\UI\Control\Uploader\UploaderFactory(%dir.files%)
 
 
 	# Console ================

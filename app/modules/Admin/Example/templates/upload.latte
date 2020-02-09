@@ -14,54 +14,17 @@
             <div class="card-body">
                 {form fileForm}
                     <div class="mb-3">
-                        <div class="custom-file">
-                            {input file 'class' => 'custom-file-input'}
-                            {label file 'class' => 'custom-file-label'}
-                        </div>
+                        {label name}
+                        {input name 'class' => 'form-control'}
                     </div>
+                    <hr class="my-3">
+                    <div class="mb-3">
+                        {control uploader:dropzone}
+                    </div>
+                    <hr class="my-3">
                     {input submit 'class' => 'btn btn-primary'}
                 {/form}
             </div>
         </div>
     </div>
-{/}
-
-{block #scripts}
-    <script>
-        const form = document.getElementById('frm-fileForm');
-        const input = document.querySelector('input[type=file]');
-
-        input.addEventListener('change', function (event) {
-            const target = event.target;
-            const label = document.querySelector('label[for=' + target.id + ']');
-
-            label.innerHTML = target.value.split("\\").pop();
-        });
-
-        form.addEventListener('submit', function (event) {
-            event.preventDefault();
-
-            let headers = new Headers();
-            headers.append('Accept', 'application/json');
-            let formData = new FormData();
-            formData.append('file', input.files[0], input.value.split("\\").pop());
-
-            let req = new Request({link :Admin:File:post}, {
-                method: 'POST',
-                headers: headers,
-                mode: 'no-cors',
-                body: formData
-            });
-
-            fetch(req)
-                .then((response) => response.json())
-                .then((result) => {
-                    console.log('Success:', result);
-                })
-                .catch((err) => {
-                    console.error(err);
-                });
-        });
-
-    </script>
 {/}

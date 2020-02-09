@@ -1,0 +1,58 @@
+<link href="{$basePath}/assets/css/dropzone.min.css?v={rev}" rel="stylesheet">
+<style>
+    .dropzone {
+        background: white;
+        border-radius: 5px;
+        border: 2px dashed rgb(0, 135, 247);
+        min-height: 150px;
+    }
+</style>
+
+<div id="dz-container" class="dropzone"></div>
+
+<script src="{$basePath}/assets/js/dropzone.min.js"></script>
+<script>
+    Dropzone.autoDiscover = false;
+    let url = {plink :Admin:File:post};
+    let buttons = {$buttons};
+    let hidden = {$hidden};
+    let files = [];
+    // Dropzone class:
+    let myDropzone = new Dropzone("#dz-container", {
+        url: url,
+        maxFilesize: 2, // 2MB
+        // chunking: true,
+        // chunkSize: 500000,
+        renameFile: function (file) {
+            return new Date().getTime() + '_' + Math.random().toString(36).substring(7);
+        }
+    });
+
+    myDropzone.on("sending", function(file) {
+        toggleButtons(true);
+    });
+    myDropzone.on('success', function (file) {
+        files.push({
+            name: file.name,
+            filename: file.upload.filename
+        });
+    });
+    myDropzone.on('queuecomplete', function () {
+        if (hidden) {
+            const element = document.getElementById(hidden);
+            element.value = JSON.stringify(files);
+        }
+        toggleButtons(false);
+    });
+
+    function toggleButtons(disabled) {
+        for (let i = 0; i < buttons.length; i++) {
+            let button = document.getElementById(buttons[i]);
+            if (disabled) {
+                button.setAttribute('disabled', 'disabled');
+            } else {
+                button.removeAttribute('disabled');
+            }
+        }
+    }
+</script>
