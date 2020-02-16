@@ -26,6 +26,9 @@ class ExamplePresenter extends BaseAdminPresenter
     /** @inject */
     public DropzoneFactory $dropzoneFactory;
 
+    /**
+     * @var array<array>
+     */
     private array $data;
 
     public function actionDatagrid(): void

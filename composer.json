@@ -75,6 +75,6 @@
         }
     },
     "scripts": {
-        "phpstan": "phpstan analyse --level 5 --configuration phpstan.neon app bin www"
+        "phpstan": "phpstan analyse --level 6 --configuration phpstan.neon app bin www"
     }
 }

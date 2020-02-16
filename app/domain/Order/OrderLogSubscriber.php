@@ -11,6 +11,9 @@ use Tracy\Debugger;
 class OrderLogSubscriber implements EventSubscriberInterface
 {
 
+    /**
+     * @return array<string>
+     */
     public static function getSubscribedEvents(): array
     {
         return [

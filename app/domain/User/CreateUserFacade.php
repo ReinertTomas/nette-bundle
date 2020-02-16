@@ -20,6 +20,10 @@ class CreateUserFacade
         $this->passwords = $passwords;
     }
 
+    /**
+     * @param array<string> $data
+     * @return User
+     */
     public function create(array $data): User
     {
         $user = new User(

@@ -17,7 +17,7 @@ class PasswordFormFactory
         $this->formFactory = $formFactory;
     }
 
-    public function create()
+    public function create(): Form
     {
         $form = $this->formFactory->createSecured();
 

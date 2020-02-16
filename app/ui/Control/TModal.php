@@ -19,7 +19,7 @@ trait TModal
 
     /**
      * @param string $modal
-     * @param array|null $attr
+     * @param array<string>|null $attr
      * @throws AbortException
      */
     public function handleModal(string $modal, ?array $attr): void

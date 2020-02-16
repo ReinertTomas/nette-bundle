@@ -31,7 +31,7 @@ class SignPresenter extends UnsecuredPresenter
         $this->redirect(App::DESTINATION_AFTER_SIGN_OUT);
     }
 
-    protected function createComponentSignInForm()
+    protected function createComponentSignInForm(): Form
     {
         $form = $this->signInFormFactory->create();
 

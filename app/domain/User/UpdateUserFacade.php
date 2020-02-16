@@ -21,6 +21,11 @@ class UpdateUserFacade
         $this->passwords = $passwords;
     }
 
+    /**
+     * @param User $user
+     * @param array<string> $data
+     * @return User
+     */
     public function update(User $user, array $data): User
     {
         $user->setName($data['name']);

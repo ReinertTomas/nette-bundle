@@ -23,6 +23,11 @@ final class UserAuthenticator implements IAuthenticator
         $this->passwords = $passwords;
     }
 
+    /**
+     * @param array<string> $credentials
+     * @return IIdentity
+     * @throws AuthenticationException
+     */
     function authenticate(array $credentials): IIdentity
     {
         [$email, $password] = $credentials;
