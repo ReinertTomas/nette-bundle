@@ -1,15 +1,15 @@
 <?php
 declare(strict_types=1);
 
-namespace App\UI\Control\Uploader;
+namespace App\UI\Control\Dropzone;
 
 use Nette\Application\UI\Control;
 use Nette\Application\UI\Form;
 use Nette\Forms\Controls\HiddenField;
 use Nette\Forms\Controls\SubmitButton;
-use Nette\Http\IResponse;
+use Nette\Http\FileUpload;
 
-final class UploaderControl extends Control
+final class DropzoneControl extends Control
 {
 
     private string $dirUpload;
@@ -34,48 +34,36 @@ final class UploaderControl extends Control
         $this->hidden = $hidden;
     }
 
-    public function renderModal(): void
-    {
-        $this->template->render(__DIR__ . '/templates/modal.latte');
-    }
-
-    public function renderButton(): void
-    {
-        $this->template->render(__DIR__ . '/templates/button.latte');
-    }
-
-    public function renderDropzone()
+    public function render(): void
     {
         $this->template->buttons = $this->getButtons();
         $this->template->hidden = $this->getHidden();
-        $this->template->render(__DIR__ . '/templates/dropzone.latte');
+        $this->template->setFile(__DIR__ . '/templates/dropzone.latte');
+        $this->template->render();
     }
 
-    public function handleUpload(): void
+    public function handlePost(): void
     {
-        $handler = new UploaderHandler(['target_dir' => $this->dirUpload]);
-        $handler->sendNoCacheHeaders();
-        $handler->sendCORSHeaders();
+        /** @var FileUpload[] $files */
+        $files = $this->getPresenter()
+            ->getRequest()
+            ->getFiles();
 
-        $result = $handler->handleUpload();
-
-        if ($result) {
-            $response = [
-                'status' => IResponse::S200_OK,
-                'message' => $result
-            ];
-        } else {
-            $response = [
-                'status' => IResponse::S500_INTERNAL_SERVER_ERROR,
-                'message' => $handler->getErrorMessage(),
-                'code' => $handler->getErrorCode()
-            ];
+        foreach ($files as $file) {
+            if ($file->isOk()) {
+                $file->move("{$this->dirUpload}/{$file->getName()}");
+            }
         }
 
         $this->getPresenter()
-            ->sendJson($response);
+            ->sendJson([
+                'message' => 'Upload success!'
+            ]);
     }
 
+    /**
+     * @return array<string>
+     */
     private function getButtons(): array
     {
         $buttons = [];

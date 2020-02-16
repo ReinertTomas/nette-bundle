@@ -2,3 +2,29 @@
  * Google fonts
  */
 @import url("https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i");
+
+.btn-xs, .btn-group-xs > .btn {
+    padding: 1px 5px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 3px;
+}
+
+.badge-sm {
+    font-size: 12px;
+}
+
+.badge-md {
+    font-size: 16px;
+}
+
+.badge-lg {
+    font-size: 20px;
+}
+
+.dropzone {
+    background: white;
+    border-radius: 5px;
+    border: 2px dashed rgb(0, 135, 247);
+    min-height: 150px;
+}

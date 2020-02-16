@@ -21,30 +21,29 @@
     },
     "homepage": "https://github.com/ReinertTomas/nette-bundle#readme",
     "dependencies": {
-        "@fortawesome/fontawesome-free": "^5.12.0",
+        "@fortawesome/fontawesome-free": "^5.12.1",
         "bootstrap": "^4.4.1",
         "bootstrap-datepicker": "^1.9.0",
         "bootstrap-select": "^1.13.12",
-        "dropzone": "^5.5.1",
+        "dropzone": "^5.7.0",
         "jquery": "^3.4.1",
         "jquery.easing": "^1.4.1",
         "naja": "^2.0.0-alpha.1",
         "nette-forms": "^3.0.3",
-        "plupload": "^2.3.6",
-        "popper.js": "^1.16.0",
-        "ublaboo-datagrid": "^6.2.5"
+        "popper.js": "^1.16.1",
+        "ublaboo-datagrid": "^6.2.6"
     },
     "devDependencies": {
-        "@babel/core": "^7.7.7",
-        "@babel/preset-env": "^7.7.7",
+        "@babel/core": "^7.8.4",
+        "@babel/preset-env": "^7.8.4",
         "babel-loader": "^8.0.6",
         "clean-webpack-plugin": "^3.0.0",
-        "css-loader": "^3.4.0",
+        "css-loader": "^3.4.2",
         "file-loader": "^5.0.2",
         "mini-css-extract-plugin": "^0.9.0",
-        "style-loader": "^1.1.2",
+        "style-loader": "^1.1.3",
         "url-loader": "^3.0.0",
-        "webpack": "^4.41.4",
-        "webpack-cli": "^3.3.10"
+        "webpack": "^4.41.6",
+        "webpack-cli": "^3.3.11"
     }
 }

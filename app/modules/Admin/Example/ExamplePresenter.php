@@ -6,12 +6,11 @@ namespace App\Modules\Admin\Example;
 use App\Domain\Order\Event\OrderCreated;
 use App\Model\Utils\DateTime;
 use App\Modules\Admin\BaseAdminPresenter;
-use App\UI\Control\Uploader\UploaderControl;
-use App\UI\Control\Uploader\UploaderFactory;
+use App\UI\Control\Dropzone\DropzoneControl;
+use App\UI\Control\Dropzone\DropzoneFactory;
 use App\UI\Form\FormFactory;
 use Nette\Application\UI\Form;
 use Nette\Forms\Controls\Button;
-use Nette\Forms\Controls\HiddenField;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Ublaboo\DataGrid\DataGrid;
 
@@ -25,7 +24,7 @@ class ExamplePresenter extends BaseAdminPresenter
     public EventDispatcherInterface $dispatcher;
 
     /** @inject */
-    public UploaderFactory $uploaderFactory;
+    public DropzoneFactory $dropzoneFactory;
 
     private array $data;
 
@@ -38,9 +37,9 @@ class ExamplePresenter extends BaseAdminPresenter
     {
         /** @var Form $form */
         $form = $this->getComponent('fileForm');
-        /** @var UploaderControl $uploader */
-        $uploader = $this->getComponent('uploader');
-        $uploader->setForm($form);
+        /** @var DropzoneControl $dropzone */
+        $dropzone = $this->getComponent('dropzone');
+        $dropzone->setForm($form);
     }
 
     protected function beforeRender(): void
@@ -168,9 +167,9 @@ class ExamplePresenter extends BaseAdminPresenter
         return $form;
     }
 
-    protected function createComponentUploader(): UploaderControl
+    protected function createComponentDropzone(): DropzoneControl
     {
-        return $this->uploaderFactory->create();
+        return $this->dropzoneFactory->create();
     }
 
     public function handleRefresh(?string $snippet): void

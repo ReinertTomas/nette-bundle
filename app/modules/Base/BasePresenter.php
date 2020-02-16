@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Modules\Base;
 
 use App\Model\Database\EntityManager;
+use App\Model\Service\DirectoryManager;
 use App\UI\Control\TFlashMessage;
 use App\UI\Control\TModal;
 use Contributte\Application\UI\Presenter\StructuredTemplates;
@@ -18,5 +19,8 @@ abstract class BasePresenter extends Presenter
 
     /** @inject */
     public EntityManager $em;
+
+    /** @inject */
+    public DirectoryManager $dm;
 
 }

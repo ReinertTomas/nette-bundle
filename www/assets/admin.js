@@ -20,5 +20,6 @@ import '@fortawesome/fontawesome-free/css/all.css';
 import 'bootstrap-datepicker/dist/css/bootstrap-datepicker3.css';
 import 'bootstrap-select/dist/css/bootstrap-select.css';
 import './css/datagrid.css';
+import 'dropzone/dist/dropzone.css';
 import './css/sb-admin-2.css';
 import './css/style.css';

@@ -14,8 +14,8 @@ parameters:
 
 	# File
 	dir:
-	    files: %appDir%/../www/files
-	    root: %appDir%/../data/files
+	    upload: /upload
+	    files: /files
 
 	# Mailing
 	mailing:

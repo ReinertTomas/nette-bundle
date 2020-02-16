@@ -18,13 +18,17 @@ services:
 	security.authenticator: App\Model\Security\Authenticator\UserAuthenticator
 
 
+	# Service ===================
+	- App\Model\Service\DirectoryManager(%appDir%, %dir.upload%, %dir.files%)
+
+
+	# Control ===================
+	- App\UI\Control\Dropzone\DropzoneFactory
+
+
 	# Grid ===================
 	- App\UI\Grid\GridFactory
 	- App\UI\Grid\User\UserGridFactory
-
-
-	# Controls ===============
-	- App\UI\Control\Uploader\UploaderFactory(%dir.files%)
 
 
 	# Console ================
@@ -34,11 +38,6 @@ services:
 	# Domain =================
 	- App\Domain\Order\OrderLogSubscriber
 
-	# User
+	## User
 	- App\Domain\User\CreateUserFacade
 	- App\Domain\User\UpdateUserFacade
-
-decorator:
-    App\Modules\Admin\File\FilePresenter:
-        setup:
-            - setDir(%dir.files%)

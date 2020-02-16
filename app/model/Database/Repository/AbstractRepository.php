@@ -6,6 +6,10 @@ namespace App\Model\Database\Repository;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Mapping\MappingException;
 
+/**
+ * @template TEntityClass
+ * @extends EntityRepository<TEntityClass>
+ */
 abstract class AbstractRepository extends EntityRepository
 {
 
