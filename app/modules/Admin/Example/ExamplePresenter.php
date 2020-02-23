@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Modules\Admin\Example;
 
+use App\Domain\File\FileFacade;
 use App\Domain\Order\Event\OrderCreated;
 use App\Model\Utils\DateTime;
 use App\Modules\Admin\BaseAdminPresenter;
@@ -25,6 +26,9 @@ class ExamplePresenter extends BaseAdminPresenter
 
     /** @inject */
     public DropzoneFactory $dropzoneFactory;
+
+    /** @inject */
+    public FileFacade $fileFacade;
 
     /**
      * @var array<array>
@@ -161,9 +165,11 @@ class ExamplePresenter extends BaseAdminPresenter
 
         $form->onSuccess[] = function (Form $form): void {
             $values = (array)$form->getValues();
-            $files = $values['files'] ?? "";
-            dump($values);
-            dump(json_decode($files));
+
+            if (!empty($values['files'])) {
+                $this->fileFacade->createFromJson($values['files']);
+            }
+            dump('file');
             die();
         };
 

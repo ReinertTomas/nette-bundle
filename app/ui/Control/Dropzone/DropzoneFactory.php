@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\UI\Control\Dropzone;
 
-use App\Model\Service\DirectoryManager;
+use App\Model\File\DirectoryManager;
 
 final class DropzoneFactory
 {
@@ -17,7 +17,7 @@ final class DropzoneFactory
 
     public function create(): DropzoneControl
     {
-        return new DropzoneControl($this->dm->getAbsUpload());
+        return new DropzoneControl($this->dm->getUpload(true));
     }
 
 }

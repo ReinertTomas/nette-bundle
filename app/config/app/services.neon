@@ -18,8 +18,8 @@ services:
 	security.authenticator: App\Model\Security\Authenticator\UserAuthenticator
 
 
-	# Service ===================
-	- App\Model\Service\DirectoryManager(%appDir%, %dir.upload%, %dir.files%)
+	# Model ===================
+	- App\Model\File\DirectoryManager(%appDir%, %dir.upload%, %dir.files%)
 
 
 	# Control ===================
@@ -37,6 +37,9 @@ services:
 
 	# Domain =================
 	- App\Domain\Order\OrderLogSubscriber
+
+	## File
+	- App\Domain\File\FileFacade
 
 	## User
 	- App\Domain\User\CreateUserFacade

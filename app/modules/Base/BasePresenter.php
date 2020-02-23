@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Modules\Base;
 
 use App\Model\Database\EntityManager;
-use App\Model\Service\DirectoryManager;
+use App\Model\File\DirectoryManager;
 use App\UI\Control\TFlashMessage;
 use App\UI\Control\TModal;
 use Contributte\Application\UI\Presenter\StructuredTemplates;
