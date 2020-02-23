@@ -5,18 +5,18 @@ namespace App\Model\File;
 
 use App\Model\Exception\Logic\InvalidArgumentException;
 
-class PathBuilder
+final class PathBuilder
 {
 
-    protected string $root;
+    private string $root;
 
-    protected string $path;
-
-    /** @var array<int, string> */
-    protected array $prefix;
+    private string $path;
 
     /** @var array<int, string> */
-    protected array $suffix;
+    private array $prefix;
+
+    /** @var array<int, string> */
+    private array $suffix;
 
     public function __construct(string $root)
     {
@@ -71,12 +71,12 @@ class PathBuilder
         return $this;
     }
 
-    protected function isPath(): bool
+    private function isPath(): bool
     {
         return $this->path !== '';
     }
 
-    protected function build(): void
+    private function build(): void
     {
         // build prefix
         foreach ($this->prefix as $prefix) {
