@@ -4,16 +4,14 @@ declare(strict_types=1);
 namespace App\Model\File;
 
 use App\Model\Exception\Logic\InvalidArgumentException;
+use App\Model\Utils\FileSystem;
 
-final class PathBuilder
+final class PathBuilder implements PathBuilderInterface
 {
 
     private string $root;
 
-    private string $path;
-
-    /** @var array<int, string> */
-    private array $prefix;
+    private bool $realpath;
 
     /** @var array<int, string> */
     private array $suffix;
@@ -21,8 +19,7 @@ final class PathBuilder
     public function __construct(string $root)
     {
         $this->root = $root;
-        $this->path = '';
-        $this->prefix = [];
+        $this->realpath = false;
         $this->suffix = [];
     }
 
@@ -33,59 +30,56 @@ final class PathBuilder
 
     public function getPath(): string
     {
-        if (!$this->isPath()) {
-            $this->build();
-        }
-        return $this->path;
+        return $this->buildPath();
     }
 
     public function getPathAbs(): string
     {
-        if (!$this->isPath()) {
-            $this->build();
-        }
-        return $this->root . $this->path;
+        $path = $this->root . $this->buildPath();
+        return $this->realpath ? realpath($path) : $path;
     }
 
     public function exists(): PathBuilder
     {
-        if (!$this->isPath()) {
-            $this->build();
-        }
-        $path = realpath($this->root . $this->path);
+        $path = realpath($this->root . $this->buildPath());
         if (!$path) {
             throw new InvalidArgumentException(sprintf('Path is not exists "%s"', $path));
         }
+        $this->realpath = true;
         return $this;
     }
 
-    public function addPrefix(string $prefix): PathBuilder
+    public function generatePath(): PathBuilder
     {
-        $this->prefix[] = $prefix;
+        $dirs = explode('/', $this->buildPath());
+        $path = $this->root;
+        foreach ($dirs as $dir) {
+            if (empty($dir))
+            {
+                continue;
+            }
+            $path = $path . '/' . $dir;
+            if (!realpath($path)) {
+                FileSystem::createDir($path);
+            }
+        }
         return $this;
     }
 
     public function addSuffix(string $suffix): PathBuilder
     {
+        $this->realpath = false;
         $this->suffix[] = $suffix;
         return $this;
     }
 
-    private function isPath(): bool
+    private function buildPath(): string
     {
-        return $this->path !== '';
-    }
-
-    private function build(): void
-    {
-        // build prefix
-        foreach ($this->prefix as $prefix) {
-            $this->path = $prefix . $this->path;
-        }
-        // build suffix
+        $path = '';
         foreach ($this->suffix as $suffix) {
-            $this->path .= $suffix;
+            $path .= $suffix;
         }
+        return $path;
     }
 
 }

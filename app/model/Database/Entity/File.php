@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace App\Model\Database\Entity;
 
 use App\Model\Database\Entity\Attributes\TCreatedAt;
-use App\Model\Exception\Logic\InvalidArgumentException;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -15,14 +14,12 @@ use Doctrine\ORM\Mapping as ORM;
 class File extends AbstractEntity
 {
 
-    public const THUMB = 'thumb_';
-
-    public const TYPE_IMAGE = 1;
-    public const TYPE_FILE = 2;
+    public const TYPE_DOCUMENT = 1;
+    public const TYPE_IMAGE = 2;
 
     public const TYPES = [
-        self::TYPE_IMAGE,
-        self::TYPE_FILE
+        self::TYPE_DOCUMENT,
+        self::TYPE_IMAGE
     ];
 
     use TCreatedAt;
@@ -35,41 +32,29 @@ class File extends AbstractEntity
     /**
      * @ORM\Column(type="string", length=128)
      */
-    protected string $filename;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
     protected string $path;
 
     /**
-     * @ORM\Column(type="string", length=32)
+     * @ORM\Column(type="string", length=128)
      */
     protected string $mime;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", length=10)
      */
     protected int $type;
 
-    public function __construct(string $name, string $filename, string $path, string $mime)
+    public function __construct(string $name, string $path, string $mime)
     {
         $this->name = $name;
-        $this->filename = $filename;
         $this->path = $path;
         $this->mime = $mime;
-
-        $this->type = self::TYPE_FILE;
+        $this->type = self::TYPE_DOCUMENT;
     }
 
     public function getName(): string
     {
         return $this->name;
-    }
-
-    public function getFilename(): string
-    {
-        return $this->filename;
     }
 
     public function getPath(): string
@@ -85,6 +70,20 @@ class File extends AbstractEntity
     public function getType(): int
     {
         return $this->type;
+    }
+
+    public function getThumb(): string
+    {
+        $position = strrpos($this->path, '.');
+        $filepath = substr($this->path, 0, $position);
+        $extension = substr($this->path, $position);
+
+        return $filepath . '_thumb' . $extension;
+    }
+
+    public function isDocument(): bool
+    {
+        return $this->type === self::TYPE_DOCUMENT;
     }
 
     public function isImage(): bool

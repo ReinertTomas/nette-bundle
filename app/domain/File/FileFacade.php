@@ -4,24 +4,33 @@ declare(strict_types=1);
 namespace App\Domain\File;
 
 use App\Model\Database\Entity\File;
+use App\Model\Database\EntityManager;
 use App\Model\Exception\Logic\InvalidArgumentException;
 use App\Model\File\DirectoryManager;
 use App\Model\Utils\FileSystem;
+use App\Model\Utils\Image;
 use Nette\Utils\Json;
 use Nette\Utils\JsonException;
 
 class FileFacade
 {
 
+    private EntityManager $em;
+
     private DirectoryManager $dm;
 
-    public function __construct(DirectoryManager $dm)
+    public function __construct(EntityManager $em, DirectoryManager $dm)
     {
+        $this->em = $em;
         $this->dm = $dm;
     }
 
-
-    public function createFromJson(string $json)
+    /**
+     * @param string $json
+     * @param string|null $dirNamespace
+     * @return File[]
+     */
+    public function createFromJson(string $json, string $dirNamespace = null): array
     {
         try {
             $items = Json::decode($json, Json::FORCE_ARRAY);
@@ -30,42 +39,39 @@ class FileFacade
         }
 
         $files = [];
+
         foreach ($items as $item) {
             $name = $item['name'];
-            $filename = $item['filename'];
+            $oldFilename = $item['filename'];
 
             // Get file from upload dir
-            $oldPath = $this->dm->findInUpload($filename);
-
-            $mime = mime_content_type($oldPath);
+            $oldPathBuilder = $this->dm->findInUpload($oldFilename);
+            $mime = FileSystem::mime($oldPathBuilder->getPathAbs());
             $extension = FileSystem::extension($name);
             $newFilename = FileSystem::generateName($extension);
-            $newPath = $this->dm->createInFiles($newFilename);
+            $newPathBuilder = $this->dm->createInFiles($newFilename, $dirNamespace);
 
-            dump($oldPath);
-            dump($name);
-            dump($newPath);
-            dump($mime);
-
-//            rename($oldPath, $newPath);
+            // Move file
+            $this->dm->move($oldPathBuilder, $newPathBuilder);
 
             $file = new File(
                 $name,
-                $newFilename,
-                $this->dm->getFiles() . '/' . $newFilename,
+                $newPathBuilder->getPath(),
                 $mime
             );
 
-            if (FileSystem::isImage($file->getMime())) {
+            if (FileSystem::isImage($newPathBuilder->getPathAbs())) {
                 $file->image();
+                $this->createThumb($file);
             }
 
             $files[] = $file;
+            $this->em->persist($file);
         }
 
-        dump($files);
-        dump('create');
-        die();
+        $this->em->flush();
+
+        return $files;
     }
 
     public function createThumb(File $file): void
@@ -74,12 +80,13 @@ class FileFacade
             throw new InvalidArgumentException("Unsupported format, only images");
         }
 
-        $path = $this->dm->createInFiles(File::THUMB . $file->getFilename());
+        $imagePathBuilder = $this->dm->findInFiles($file);
+        $thumbPathBuilder = $this->dm->createInFiles($file->getThumb());
 
-        $image = Image::fromFile($file->getPath());
+        $image = Image::fromFile($imagePathBuilder->getPathAbs());
         $image->resize(100, 100, Image::EXACT);
         $image->sharpen();
-        $image->save($path, 80, Image::JPEG);
+        $image->save($thumbPathBuilder->getPathAbs(), 80, Image::JPEG);
     }
 
 }

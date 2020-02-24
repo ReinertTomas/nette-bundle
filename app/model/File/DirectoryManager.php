@@ -3,8 +3,7 @@ declare(strict_types=1);
 
 namespace App\Model\File;
 
-use App\Model\Exception\Logic\InvalidArgumentException;
-use App\Model\Utils\FileSystem;
+use App\Model\Database\Entity\File;
 use Nette\Http\Request;
 
 final class DirectoryManager
@@ -17,6 +16,8 @@ final class DirectoryManager
     private string $app;
 
     private string $temp;
+
+    private string $resources;
 
     private string $www;
 
@@ -34,6 +35,10 @@ final class DirectoryManager
             ->addSuffix('/../temp')
             ->exists()
             ->getPathAbs();
+        $this->resources = PathBuilder::create($app)
+            ->addSuffix('/resources')
+            ->exists()
+            ->getPathAbs();
         $this->www = PathBuilder::create($app)
             ->addSuffix('/../www')
             ->exists()
@@ -42,7 +47,7 @@ final class DirectoryManager
             ->addSuffix($upload)
             ->exists();
         $this->files = PathBuilder::create($this->www)
-            ->addPrefix($files)
+            ->addSuffix($files)
             ->exists();
     }
 
@@ -56,40 +61,58 @@ final class DirectoryManager
         return $this->temp;
     }
 
+    public function getResources(): string
+    {
+        return $this->resources;
+    }
+
     public function getWww(): string
     {
         return $this->www;
     }
 
-    public function getUpload(bool $isAbsolute = false): string
+    public function getUpload(): PathBuilderInterface
     {
-        return $isAbsolute ? $this->upload->getPathAbs() : $this->upload->getPath();
+        return $this->upload;
     }
 
-    public function getFiles(bool $isAbsolute = false): string
+    public function getFiles(): PathBuilderInterface
     {
-        return $isAbsolute ? $this->files->getPathAbs() : $this->upload->getPath();
+        return $this->files;
     }
 
-    public function findInUpload(string $filename): string
+    public function findInUpload(string $filename): PathBuilderInterface
     {
-        $path = PathBuilder::create($this->upload->getPathAbs())
+        return PathBuilder::create($this->upload->getPathAbs())
             ->addSuffix('/')
             ->addSuffix($filename)
-            ->exists()
-            ->getPathAbs();
-        if (!file_exists($path)) {
-            throw new InvalidArgumentException(sprintf('File not exist in path "%s"', $path));
-        }
-        return $path;
+            ->exists();
     }
 
-    public function createInFiles(string $path): string
+    public function findInFiles(File $file): PathBuilderInterface
     {
         return PathBuilder::create($this->files->getPathAbs())
-            ->addSuffix('/')
-            ->addSuffix($path)
-            ->getPathAbs();
+            ->addSuffix($file->getPath())
+            ->exists();
+    }
+
+    public function createInFiles(string $filename, string $namespace = null): PathBuilderInterface
+    {
+        $pb = PathBuilder::create($this->files->getPathAbs());
+
+        if ($namespace) {
+            $pb->addSuffix($namespace)
+                ->generatePath()
+                ->exists();
+        }
+
+        return $pb->addSuffix('/')
+            ->addSuffix($filename);
+    }
+
+    public function move(PathBuilderInterface $old, PathBuilderInterface $new): void
+    {
+        rename($old->getPathAbs(), $new->getPathAbs());
     }
 
 }

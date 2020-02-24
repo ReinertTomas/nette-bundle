@@ -17,7 +17,10 @@ final class DropzoneFactory
 
     public function create(): DropzoneControl
     {
-        return new DropzoneControl($this->dm->getUpload(true));
+        return new DropzoneControl(
+            $this->dm->getUpload()
+                ->getPathAbs()
+        );
     }
 
 }

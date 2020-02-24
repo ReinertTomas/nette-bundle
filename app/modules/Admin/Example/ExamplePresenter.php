@@ -167,10 +167,11 @@ class ExamplePresenter extends BaseAdminPresenter
             $values = (array)$form->getValues();
 
             if (!empty($values['files'])) {
-                $this->fileFacade->createFromJson($values['files']);
+                $files = $this->fileFacade->createFromJson($values['files']);
             }
-            dump('file');
-            die();
+
+            $this->flashSuccess('_message.success');
+            $this->redirect('this');
         };
 
         return $form;
