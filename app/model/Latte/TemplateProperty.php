@@ -7,8 +7,8 @@ use App\Model\Database\Entity\User;
 use Nette\Bridges\ApplicationLatte\Template;
 
 /**
- * @property-read User $userLoggedIn
- * @property-read string $filePath
+ * @property User $userLoggedIn
+ * @property string $filesPath
  */
 final class TemplateProperty extends Template
 {

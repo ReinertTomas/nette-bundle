@@ -12,3 +12,6 @@ services:
     # User
     - App\UI\Form\User\NewUserFormFactory
     - App\UI\Form\User\EditUserFormFactory
+
+    # Gallery
+    - App\UI\Form\Gallery\GalleryFormFactory

@@ -15,4 +15,17 @@ use App\Model\Database\Entity\File;
 class FileRepository extends AbstractRepository
 {
 
+    /**
+     * @return File[]
+     */
+    public function findImages(): array
+    {
+        $qb = $this->createQueryBuilder('f');
+        $qb->where('f.type = :type')
+            ->setParameter('type', File::TYPE_IMAGE);
+
+        return $qb->getQuery()
+            ->getResult();
+    }
+
 }
