@@ -5,11 +5,15 @@ namespace App\Modules\Base;
 
 use App\Model\Database\EntityManager;
 use App\Model\File\DirectoryManager;
+use App\Model\Latte\TemplateProperty;
 use App\UI\Control\TFlashMessage;
 use App\UI\Control\TModal;
 use Contributte\Application\UI\Presenter\StructuredTemplates;
 use Nette\Application\UI\Presenter;
 
+/**
+ * @property TemplateProperty $template
+ */
 abstract class BasePresenter extends Presenter
 {
 

@@ -24,18 +24,16 @@ final class FileSystem extends ContributteFileSystem
 
     public static function isImage(string $path): bool
     {
-        if (!realpath($path)) {
-            throw new InvalidArgumentException(sprintf('Image not exist in the path "%s:', $path));
-        }
-        return in_array(Strings::lower(mime_content_type($path)), self::IMAGES);
+        return in_array(Strings::lower(self::mime($path)), self::IMAGES);
     }
 
     public static function mime(string $path): string
     {
-        if (!realpath($path)) {
-            throw new InvalidArgumentException(sprintf('Image not exist in the path "%s:', $path));
+        $mime = mime_content_type($path);
+        if ($mime === false) {
+            throw new InvalidArgumentException(sprintf('File not exist in the path "%s:', $path));
         }
-        return mime_content_type($path);
+        return $mime;
     }
 
 }

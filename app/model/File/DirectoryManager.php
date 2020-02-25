@@ -110,6 +110,26 @@ final class DirectoryManager
             ->addSuffix($filename);
     }
 
+    public function removeInFiles(File $file): void
+    {
+        $pathAbs = $this->files->getPathAbs();
+        $pb = PathBuilder::create($pathAbs)
+            ->addSuffix($file->getPath());
+        // Remove if exists
+        if ($pb->isExist()) {
+            unlink($pb->getPathAbs());
+        }
+        // Remove thumb if image
+        if ($file->isImage()) {
+            $pbThumb = PathBuilder::create($pathAbs)
+                ->addSuffix($file->getThumb());
+            // Remove if exists
+            if ($pbThumb->isExist()) {
+                unlink($pbThumb->getPathAbs());
+            }
+        }
+    }
+
     public function move(PathBuilderInterface $old, PathBuilderInterface $new): void
     {
         rename($old->getPathAbs(), $new->getPathAbs());

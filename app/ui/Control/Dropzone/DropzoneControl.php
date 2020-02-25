@@ -4,14 +4,13 @@ declare(strict_types=1);
 namespace App\UI\Control\Dropzone;
 
 use App\Model\File\PathBuilder;
-use Nette\Application\UI\Control;
+use App\UI\Control\BaseControl;
 use Nette\Application\UI\Form;
 use Nette\Forms\Controls\HiddenField;
 use Nette\Forms\Controls\SubmitButton;
 use Nette\Http\FileUpload;
-use Tracy\Debugger;
 
-final class DropzoneControl extends Control
+final class DropzoneControl extends BaseControl
 {
 
     private string $dir;

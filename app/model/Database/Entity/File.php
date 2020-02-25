@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Model\Database\Entity;
 
 use App\Model\Database\Entity\Attributes\TCreatedAt;
+use App\Model\Exception\Logic\InvalidArgumentException;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -75,6 +76,10 @@ class File extends AbstractEntity
     public function getThumb(): string
     {
         $position = strrpos($this->path, '.');
+        if ($position === false) {
+            throw new InvalidArgumentException(sprintf('Invalid path format "%s"', $this->path));
+        }
+
         $filepath = substr($this->path, 0, $position);
         $extension = substr($this->path, $position);
 

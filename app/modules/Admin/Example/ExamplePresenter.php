@@ -5,6 +5,7 @@ namespace App\Modules\Admin\Example;
 
 use App\Domain\File\FileFacade;
 use App\Domain\Order\Event\OrderCreated;
+use App\Model\Exception\Logic\InvalidArgumentException;
 use App\Model\Utils\DateTime;
 use App\Modules\Admin\BaseAdminPresenter;
 use App\UI\Control\Dropzone\DropzoneControl;
@@ -12,6 +13,8 @@ use App\UI\Control\Dropzone\DropzoneFactory;
 use App\UI\Form\FormFactory;
 use Nette\Application\UI\Form;
 use Nette\Forms\Controls\Button;
+use Nette\Utils\Json;
+use Nette\Utils\JsonException;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Ublaboo\DataGrid\DataGrid;
 
@@ -37,7 +40,15 @@ class ExamplePresenter extends BaseAdminPresenter
 
     public function actionDatagrid(): void
     {
-        $this->data = json_decode(file_get_contents("./table.json"), true);
+        $json = file_get_contents("./table.json");
+        if ($json === false) {
+            throw new InvalidArgumentException('Cannot load data from file');
+        }
+        try {
+            $this->data = Json::decode($json);
+        } catch (JsonException $e) {
+            throw new InvalidArgumentException($e->getMessage());
+        }
     }
 
     public function actionUpload(): void

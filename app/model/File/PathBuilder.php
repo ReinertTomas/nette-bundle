@@ -35,15 +35,26 @@ final class PathBuilder implements PathBuilderInterface
 
     public function getPathAbs(): string
     {
-        $path = $this->root . $this->buildPath();
-        return $this->realpath ? realpath($path) : $path;
+        $path = $this->buildPathAbs();
+        if ($this->realpath) {
+            $path = realpath($path);
+            if (!$path) {
+                throw new InvalidArgumentException(sprintf('File not exists in path "%s"', $path));
+            }
+        }
+
+        return $path;
+    }
+
+    public function isExist(): bool
+    {
+        return file_exists($this->buildPathAbs());
     }
 
     public function exists(): PathBuilder
     {
-        $path = realpath($this->root . $this->buildPath());
-        if (!$path) {
-            throw new InvalidArgumentException(sprintf('Path is not exists "%s"', $path));
+        if (!$this->isExist()) {
+            throw new InvalidArgumentException(sprintf('File not exists in path "%s"', $this->buildPathAbs()));
         }
         $this->realpath = true;
         return $this;
@@ -54,8 +65,7 @@ final class PathBuilder implements PathBuilderInterface
         $dirs = explode('/', $this->buildPath());
         $path = $this->root;
         foreach ($dirs as $dir) {
-            if (empty($dir))
-            {
+            if (empty($dir)) {
                 continue;
             }
             $path = $path . '/' . $dir;
@@ -80,6 +90,11 @@ final class PathBuilder implements PathBuilderInterface
             $path .= $suffix;
         }
         return $path;
+    }
+
+    private function buildPathAbs(): string
+    {
+        return $this->root . $this->buildPath();
     }
 
 }
