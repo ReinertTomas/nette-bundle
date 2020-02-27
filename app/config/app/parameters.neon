@@ -27,3 +27,8 @@ parameters:
 		host: localhost
 		username: fake
 		password: fake
+
+	# Image thumb
+	thumb:
+	    width: 200
+	    height: 200

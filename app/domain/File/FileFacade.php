@@ -19,10 +19,25 @@ class FileFacade
 
     private DirectoryManager $dm;
 
+    /** @var array<string, int> */
+    private array $thumb;
+
     public function __construct(EntityManager $em, DirectoryManager $dm)
     {
         $this->em = $em;
         $this->dm = $dm;
+        $this->thumb = ['width' => 100, 'height' => 100];
+    }
+
+    /**
+     * @param array<string, int> $thumb
+     */
+    public function setThumb(array $thumb): void
+    {
+        if (!isset($thumb['width']) OR !isset($thumb['height'])) {
+            throw new InvalidArgumentException('Unsupported image thumb size');
+        }
+        $this->thumb = $thumb;
     }
 
     /**
@@ -84,7 +99,7 @@ class FileFacade
         $thumbPathBuilder = $this->dm->createInFiles($file->getThumb());
 
         $image = Image::fromFile($imagePathBuilder->getPathAbs());
-        $image->resize(100, 100, Image::EXACT);
+        $image->resize($this->thumb['width'], $this->thumb['height'], Image::EXACT);
         $image->sharpen();
         $image->save($thumbPathBuilder->getPathAbs(), 80, Image::JPEG);
     }

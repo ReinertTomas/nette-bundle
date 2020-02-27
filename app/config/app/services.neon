@@ -44,3 +44,9 @@ services:
 	## User
 	- App\Domain\User\CreateUserFacade
 	- App\Domain\User\UpdateUserFacade
+
+decorator:
+    # File
+    App\Domain\File\FileFacade:
+        setup:
+            - setThumb(%thumb%)
