@@ -44,7 +44,7 @@ class CardPresenter extends BaseAdminPresenter
         $dropzone->setForm($form);
     }
 
-    public function actionEdit(int $id)
+    public function actionEdit(int $id): void
     {
         $this->id = $id;
 
@@ -68,7 +68,7 @@ class CardPresenter extends BaseAdminPresenter
         $this->template->card = $this->card;
     }
 
-    public function handleDelete(int $id)
+    public function handleDelete(int $id): void
     {
         $card = $this->em->getCardRepository()->find($id);
         if (!$card) {

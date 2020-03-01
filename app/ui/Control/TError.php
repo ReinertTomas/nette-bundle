@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\UI\Control;
 
 use App\Modules\Base\BasePresenter;
+use Nette\Http\IResponse;
 
 /**
  * @mixin BasePresenter
