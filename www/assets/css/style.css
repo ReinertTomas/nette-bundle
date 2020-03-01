@@ -28,3 +28,13 @@
     border: 2px dashed rgb(0, 135, 247);
     min-height: 150px;
 }
+
+.card {
+    position: relative;
+}
+
+.card .card-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}

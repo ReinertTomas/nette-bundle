@@ -1,0 +1,34 @@
+{block #heading}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a n:href=":Admin:Home:">Home</a></li>
+            <li class="breadcrumb-item"><a n:href=":Admin:Card:">Card</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Edit</li>
+        </ol>
+    </nav>
+{/}
+
+{block #content}
+    <div class="container p-0">
+        <div class="my-4 text-center">
+            <img src="{$basePath}{$filesPath}{$card->getImage()->getPath()}" class="img-fluid" alt="Card Image" style="width: 400px;">
+        </div>
+        {form cardForm}
+            <div class="mb-3">
+                {label title}
+                {input title 'class' => 'form-control', 'placeholder' => '* Title'}
+                <div class="invalid-feedback">
+                    Please enter title.
+                </div>
+            </div>
+            <div class="mb-3">
+                {label description}
+                {input description 'class' => 'form-control', 'placeholder' => '* Description'}
+                <div class="invalid-feedback">
+                    Please enter description.
+                </div>
+            </div>
+            {input submit 'class' => 'btn btn-primary', 'value' => 'Save'}
+        {/form}
+    </div>
+{/}

@@ -1,0 +1,86 @@
+{block #heading}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a n:href=":Admin:Home:">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Card</li>
+        </ol>
+    </nav>
+    <div class="d-sm-flex justify-content-end mb-3">
+        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal"
+           data-target="#uploadModal">
+            <i class="fas fa-upload fa-sm text-white-50"></i> Upload
+        </a>
+    </div>
+{/}
+
+{block #content}
+    <div n:snippet="cards" class="container p-0">
+        <div class="row">
+            <div n:foreach="$cards as $card" class="col-md-6 col-lg-3">
+                <div class="card shadow mb-4">
+                    <div n:class="card-badge, badge, badge-md, $card->isHidden() ? 'badge-danger' : 'badge-warning'">{$card->isHidden() ? 'Hidden' : 'Public'}</div>
+                    <img class="card-img-top" src="{$basePath}{$filesPath}{$card->getImage()->getThumb()}" alt="Card Image">
+                    <div class="card-body">
+                        <h5 class="card-title">{$card->getTitle()}</h5>
+                        <p class="card-text">{$card->getDescription()}</p>
+                        <div class="text-center">
+                            <a n:href="toggleVisibility! $card->getId()" class="ajax btn btn-primary"><i n:class="fas, $card->isHidden() ? 'fa-eye' : 'fa-eye-slash'" title="{$card->isHidden() ? 'Show' : 'Hide'}"></i></a>
+                            <a n:href=":Admin:Card:edit $card->getId()" class="btn btn-warning" title="Edit"><i class="fas fa-pencil-alt"></i></a>
+                            <a n:href="delete! $card->getId()" class="ajax btn btn-danger" title="Delete"><i class="fas fa-trash-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Upload Modal-->
+    <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                {form uploadForm}
+                    <div class="modal-header">
+                        <h5 class="modal-title">Upload Images</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        {control dropzone}
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        {input submit 'class' => 'btn btn-primary'}
+                    </div>
+                {/form}
+            </div>
+        </div>
+    </div>
+{/}
+
+{define modal-content-edit}
+    <div class="modal-content">
+        {form cardForm}
+            <div class="modal-header">
+                <h5 class="modal-title">Edit</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    {label title /}
+                    {input title 'class' => 'form-control'}
+                </div>
+                <div class="mb-3">
+                    {label description /}
+                    {input description 'class' => 'form-control'}
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                {input submit 'class' => 'btn btn-primary', 'value' => 'Save'}
+            </div>
+        {/form}
+    </div>
+{/}

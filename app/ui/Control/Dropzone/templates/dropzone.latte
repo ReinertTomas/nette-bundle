@@ -6,11 +6,13 @@
     let url = {link post!};
     let buttons = {$buttons};
     let hidden = {$hidden};
+    let acceptedFiles = {$acceptedFiles};
     let files = [];
     // Dropzone class:
     let myDropzone = new Dropzone("#dz-container", {
         url: url,
         maxFilesize: 4, // 2MB
+        acceptedFiles: acceptedFiles,
         dictDefaultMessage: "Click or drop files here",
         renameFile: function (file) {
             return new Date().getTime().toString() + Math.random().toString(36).substring(7) + '_' + file.name;

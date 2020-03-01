@@ -9,7 +9,6 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Model\Database\Repository\FileRepository")
- * @ORM\Table(name="File")
  * @ORM\HasLifecycleCallbacks
  */
 class File extends AbstractEntity
@@ -56,6 +55,15 @@ class File extends AbstractEntity
     public function getName(): string
     {
         return $this->name;
+    }
+
+    public function getFilename(): string
+    {
+        $position = strrpos($this->path, '/');
+        if ($position === false) {
+            throw new InvalidArgumentException(sprintf('Invalid path format "%s"', $this->path));
+        }
+        return substr($this->path, $position + 1);
     }
 
     public function getPath(): string

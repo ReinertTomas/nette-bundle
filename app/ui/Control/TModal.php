@@ -28,6 +28,7 @@ trait TModal
             $this->template->modal = $modal;
             $this->template->modalAttr = $attr;
             $this->redrawControl('modal');
+            $this->setAjaxPostGet();
         } else {
             $this->redirect('this');
         }

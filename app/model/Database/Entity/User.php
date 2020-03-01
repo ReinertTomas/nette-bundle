@@ -12,7 +12,6 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Model\Database\Repository\UserRepository")
- * @ORM\Table(name="user")
  * @ORM\HasLifecycleCallbacks
  */
 class User extends AbstractEntity

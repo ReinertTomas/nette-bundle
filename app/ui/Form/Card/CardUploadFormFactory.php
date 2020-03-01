@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace App\UI\Form\Gallery;
+namespace App\UI\Form\Card;
 
 use App\UI\Form\FormFactory;
 use Nette\Application\UI\Form;
 
-final class GalleryFormFactory
+final class CardUploadFormFactory
 {
 
     private FormFactory $formFactory;

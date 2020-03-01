@@ -3,8 +3,10 @@ declare(strict_types=1);
 
 namespace App\Model\Database;
 
+use App\Model\Database\Entity\Card;
 use App\Model\Database\Entity\File;
 use App\Model\Database\Entity\User;
+use App\Model\Database\Repository\CardRepository;
 use App\Model\Database\Repository\FileRepository;
 use App\Model\Database\Repository\UserRepository;
 
@@ -22,6 +24,11 @@ trait TRepositories
     public function getFileRepository(): FileRepository
     {
         return $this->getRepository(File::class);
+    }
+
+    public function getCardRepository(): CardRepository
+    {
+        return $this->getRepository(Card::class);
     }
 
 }

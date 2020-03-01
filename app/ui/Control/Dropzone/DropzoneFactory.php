@@ -15,7 +15,7 @@ final class DropzoneFactory
         $this->dm = $dm;
     }
 
-    public function create(): DropzoneControl
+    public function create(bool $onlyImages = false): DropzoneControl
     {
         return new DropzoneControl(
             $this->dm->getUpload()

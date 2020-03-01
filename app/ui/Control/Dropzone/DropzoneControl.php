@@ -13,16 +13,21 @@ use Nette\Http\FileUpload;
 final class DropzoneControl extends BaseControl
 {
 
+    private const ACCEPT_IMAGES = 'image/*';
+
     private string $dir;
 
     private Form $form;
 
     private string $hidden;
 
+    private ?string $acceptedFiles;
+
     public function __construct(string $dir)
     {
         $this->dir = $dir;
         $this->hidden = 'files';
+        $this->acceptedFiles = null;
     }
 
     public function setForm(Form $form): void
@@ -35,10 +40,16 @@ final class DropzoneControl extends BaseControl
         $this->hidden = $hidden;
     }
 
+    public function acceptOnlyImages(): void
+    {
+        $this->acceptedFiles = self::ACCEPT_IMAGES;
+    }
+
     public function render(): void
     {
         $this->template->buttons = $this->getButtons();
         $this->template->hidden = $this->getHidden();
+        $this->template->acceptedFiles = $this->acceptedFiles;
         $this->template->setFile(__DIR__ . '/templates/dropzone.latte');
         $this->template->render();
     }
