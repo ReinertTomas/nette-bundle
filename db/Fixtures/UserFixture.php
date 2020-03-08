@@ -36,7 +36,7 @@ class UserFixture extends AbstractFixture
     {
         yield [
             'name' => 'Admin',
-            'surname' => 'Adminer',
+            'surname' => 'Admin',
             'email' => 'admin@admin.net',
             'password' => 'Admin123!',
             'role' => User::ROLE_ADMIN
